@@ -1,20 +1,106 @@
-﻿<phone:PhoneApplicationPage
-    x:Class="Codealike.WP8.LoginView"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
-    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    FontFamily="{StaticResource PhoneFontFamilyNormal}"
-    FontSize="{StaticResource PhoneFontSizeNormal}"
-    Foreground="{StaticResource PhoneForegroundBrush}"
-    SupportedOrientations="Portrait" Orientation="Portrait"
-    shell:SystemTray.IsVisible="True">
-
+﻿<phone:PhoneApplicationPage x:Class="Codealike.WP8.Views.LoginView"
+                            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                            xmlns:bindableAppBar="clr-namespace:Caliburn.Micro.BindableAppBar;assembly=Caliburn.Micro.BindableAppBar"
+                            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                            xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+                            xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+                            FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                            FontSize="{StaticResource PhoneFontSizeNormal}"
+                            Foreground="{StaticResource PhoneForegroundBrush}"
+                            Orientation="Portrait"
+                            SupportedOrientations="Portrait"
+                            shell:SystemTray.IsVisible="True"
+                            mc:Ignorable="d">
+    <phone:PhoneApplicationPage.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="FontSize" Value="22" />
+        </Style>
+        <Storyboard x:Name="HelpAnimation">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="HelpText" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-163" />
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0" />
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="HelpText" Storyboard.TargetProperty="(UIElement.Opacity)">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0" />
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1" />
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </phone:PhoneApplicationPage.Resources>
     <Grid x:Name="LayoutRoot" Background="{StaticResource CodealikePageBackground}">
-       
+        <bindableAppBar:BindableAppBar BackgroundColor="#F47723">
+            <bindableAppBar:BindableAppBarButton IconUri="/Assets/AppBarIcons/check.png" Text="submit" />
+        </bindableAppBar:BindableAppBar>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*" />
+                <RowDefinition Height="7*" />
+            </Grid.RowDefinitions>
+            <Grid>
+                <StackPanel Margin="20"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Top"
+                            Orientation="Vertical">
+                    <Image Height="30" Source="/Assets/Images/logo.png" />
+                    <TextBlock FontSize="20"
+                               Foreground="Black"
+                               Text="codealike" />
+                </StackPanel>
+                <TextBlock Margin="0 20 0 0"
+                           HorizontalAlignment="Center"
+                           FontSize="40"
+                           Foreground="Black"
+                           Text="Login" />
+            </Grid>
+            <Grid Grid.Row="1" Width="300">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="45*" />
+                    <RowDefinition Height="65*" />
+                </Grid.RowDefinitions>
+                <StackPanel x:Name="HelpText"
+                            Grid.Row="1"
+                            HorizontalAlignment="Center"
+                            Opacity="0"
+                            RenderTransformOrigin="0.5,0.5">
+                    <StackPanel.RenderTransform>
+                        <CompositeTransform />
+                    </StackPanel.RenderTransform>
+                    <TextBlock RenderTransformOrigin="0.5,0.5"
+                               Text="In order to fill these fields, you must go to your"
+                               TextAlignment="Center"
+                               FontSize="18"
+                               TextWrapping="Wrap" />
+                    <HyperlinkButton Content="Codealike settings"
+                                     FontSize="20"
+                                     Tap="OpenSettingsPage"
+                                     Foreground="#F47723" />
+                    <TextBlock Text="and copy/paste the username and public API token in these fields"
+                               TextAlignment="Center"
+                               FontSize="18"
+                               TextWrapping="Wrap" />
+                </StackPanel>
+
+                <StackPanel Grid.Row="0"
+                            Width="300"
+                            HorizontalAlignment="Center"
+                            Background="{StaticResource CodealikePageBackground}">
+                    <TextBlock HorizontalAlignment="Center" Text="username" />
+                    <TextBox Margin="0 5 0 20" Style="{StaticResource CustomTextBoxWithRoundedCorners}" />
+                    <TextBlock HorizontalAlignment="Center" Text="codealike token" />
+                    <TextBox Margin="0 5"
+                             BorderBrush="Gray"
+                             Style="{StaticResource CustomTextBoxWithRoundedCorners}" />
+                    <HyperlinkButton Margin="0 0 0 20"
+                                     VerticalAlignment="Bottom"
+                                     Content="help"
+                                     Foreground="#F47723"
+                                     Tap="OnHelpTapped" />
+                </StackPanel>
+            </Grid>
+        </Grid>
     </Grid>
+
 
 </phone:PhoneApplicationPage>

@@ -6,8 +6,13 @@
 
     <!--Application Resources-->
     <Application.Resources>
-        <models:LocalizedStrings x:Key="LocalizedStrings"/>
-        <models:AppBootstrapper x:Key="Bootstrapper"></models:AppBootstrapper>
-        <SolidColorBrush x:Key="CodealikePageBackground" Color="White" ></SolidColorBrush>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/AppStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <models:LocalizedStrings x:Key="LocalizedStrings"/>
+            <models:AppBootstrapper x:Key="Bootstrapper"></models:AppBootstrapper>
+            <SolidColorBrush x:Key="CodealikePageBackground" Color="White" ></SolidColorBrush>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
