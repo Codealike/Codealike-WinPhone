@@ -1,0 +1,13 @@
+﻿<Application
+    x:Class="Codealike.WP8.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:models="clr-namespace:Codealike.WP8.Models">
+
+    <!--Application Resources-->
+    <Application.Resources>
+        <models:LocalizedStrings x:Key="LocalizedStrings"/>
+        <models:AppBootstrapper x:Key="Bootstrapper"></models:AppBootstrapper>
+        <SolidColorBrush x:Key="CodealikePageBackground" Color="White" ></SolidColorBrush>
+    </Application.Resources>
+</Application>
