@@ -49,6 +49,7 @@
     <Compile Include="Communication\ApiModels\UserData.cs" />
     <Compile Include="Communication\Services\UserDataService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\IAppRepository.cs" />
     <Compile Include="Tools\IPageNavigationService.cs" />
     <Compile Include="Tools\IUserNotificationService.cs" />
     <Compile Include="Tools\ValidationExtensions.cs" />

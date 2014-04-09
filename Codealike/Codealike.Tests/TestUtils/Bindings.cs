@@ -1,4 +1,6 @@
-﻿namespace Codealike.Tests.TestUtils
+﻿using Codealike.PortableLogic.Repositories;
+
+namespace Codealike.Tests.TestUtils
 {
     using Moq;
     using Ninject.Modules;
@@ -16,6 +18,7 @@
 
             Bind<IUserDataService>().ToConstant(new Mock<IUserDataService>().Object);
             Bind<IPageNavigationService>().ToConstant(new Mock<IPageNavigationService>().Object);
+            Bind<IAppRepository>().ToConstant(new Mock<IAppRepository>().Object);
             Bind<IUserNotificationService>().ToConstant(new Mock<IUserNotificationService>().Object);
         }
     }

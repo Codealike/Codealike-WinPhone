@@ -1,23 +1,37 @@
-﻿using System;
-using System.Threading.Tasks;
-using Codealike.PortableLogic.Communication.Services;
-using Codealike.PortableLogic.Tools;
-using Codealike.WP8.Resources;
-
-namespace Codealike.WP8.ViewModels
+﻿namespace Codealike.WP8.ViewModels
 {
+    using System;
+    using System.Threading.Tasks;
+
+    using Resources;
+    using PortableLogic.Tools;
+    using PortableLogic.Repositories;
+    using PortableLogic.Communication.Services;
+    
     public class LoginViewModel : ViewModelBase, ILoginViewModel
     {
         private readonly IUserDataService _userDataService;
         private readonly IPageNavigationService _pageNavigationService;
         private readonly IUserNotificationService _userNotificationService;
+        private readonly IAppRepository _appRepository;
 
-        public LoginViewModel(IUserDataService userDataService, IPageNavigationService pageNavigationService, IUserNotificationService userNotificationService)
+        public LoginViewModel(IUserDataService userDataService, IPageNavigationService pageNavigationService, IUserNotificationService userNotificationService, IAppRepository appRepository)
             : base(pageNavigationService)
         {
             _userDataService = userDataService;
             _pageNavigationService = pageNavigationService;
             _userNotificationService = userNotificationService;
+            _appRepository = appRepository;
+        }
+
+
+        protected override async void OnInitialize()
+        {
+            base.OnInitialize();
+            var credentials = _appRepository.LoadCredentials();
+            if ( credentials == null )
+                return;
+            await LoginUser(credentials);
         }
 
         public string UserName { get; set; }
@@ -29,12 +43,18 @@ namespace Codealike.WP8.ViewModels
             var credentials = GetCredentials();
             if (credentials == null)
                 return;
+            await LoginUser(credentials);
+        }
+
+        private async Task LoginUser(Credentials credentials)
+        {
             var webApiCallReport = await _userDataService.GetUserData(credentials);
             if (webApiCallReport.Successful == false)
                 _userNotificationService.ShowError(webApiCallReport.ErrorMessage);
             else
             {
                 _pageNavigationService.Data["UserData"] = webApiCallReport.Content;
+                _appRepository.SaveCredentials(credentials);
                 _pageNavigationService.NavigateTo<UserDataViewModel>();
             }
         }

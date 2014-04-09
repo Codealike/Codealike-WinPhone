@@ -1,3 +1,6 @@
+using Codealike.PortableLogic.Repositories;
+using Codealike.WP8.Repositories;
+
 namespace Codealike.WP8.Tools
 {
     using System;
@@ -32,8 +35,9 @@ namespace Codealike.WP8.Tools
 
             _container.RegisterPerRequest(typeof(IWebClient), "WebClient", typeof(WebClient));
             _container.RegisterPerRequest(typeof(IUserDataService), "UserDataService", typeof(UserDataService));
-            _container.RegisterPerRequest(typeof(IUserNotificationService), "UserNotificationService", typeof(UserNotificationService));
             _container.RegisterSingleton(typeof(IPageNavigationService), "PageNavigationService", typeof(PageNavigationService));
+            _container.RegisterPerRequest(typeof(IAppRepository), "AppRepository", typeof(AppRepository));
+            _container.RegisterPerRequest(typeof(IUserNotificationService), "UserNotificationService", typeof(UserNotificationService));
 
 			AddCustomConventions();
 		}
