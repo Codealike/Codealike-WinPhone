@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using Codealike.PortableLogic.Communication.Services;
-
-namespace Codealike.PortableLogic.Communication.ApiModels
+﻿namespace Codealike.PortableLogic.Communication.ApiModels
 {
+    using System;
+    using System.Collections.Generic;
+
     public class UserData
     {
         public Activity ActivityPercentage { get; set; }

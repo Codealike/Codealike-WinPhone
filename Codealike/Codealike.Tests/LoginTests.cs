@@ -1,25 +1,29 @@
-﻿using Codealike.PortableLogic.Communication.ApiModels;
-using Codealike.PortableLogic.Communication.Infrastructure;
-using Codealike.PortableLogic.Communication.Services;
-using Codealike.Tests.TestUtils;
-using Codealike.WP8.Resources;
-using Codealike.WP8.ViewModels;
-using FluentAssertions;
-using Moq;
-using NUnit.Framework;
-using NUnit.Framework.Constraints;
+﻿using System.Collections.Generic;
 
 namespace Codealike.Tests
 {
+    using Moq;
+    using NUnit.Framework;
+    using FluentAssertions;
+
+    using TestUtils;
+    using WP8.Resources;
+    using WP8.ViewModels;
+    using PortableLogic.Communication.Services;
+    using PortableLogic.Communication.ApiModels;
+    using PortableLogic.Communication.Infrastructure;
+
     public class LoginTests
     {
         private ILoginViewModel _viewModel;
-        private Credentials _validCredentials;
+        private Dictionary<string, object> _dictionary;
 
         [SetUp]
         public void SetupTest()
         {
+            _dictionary = new Dictionary<string, object>();
             TestMocks.Initialize();
+            TestMocks.PageNavigationMock.Setup(p => p.Data).Returns(_dictionary);
             _viewModel = NinjectIoC.Get<ILoginViewModel>();
             TestMocks.UserDataServiceMock.Setup(u => u.GetUserData(It.IsAny<Credentials>())).ReturnsTask(new WebApiCallReport<UserData>());
         }
@@ -47,7 +51,8 @@ namespace Codealike.Tests
             _viewModel.TokenData = token;
             _viewModel.UserName = userName;
             await _viewModel.Login();
-            (_viewModel as ViewModelBase).ErrorMessage.Should().NotBeEmpty();
+            var viewModelBase = _viewModel as ViewModelBase;
+            if (viewModelBase != null) viewModelBase.ErrorMessage.Should().NotBeEmpty();
         }
 
         [Test]
@@ -72,6 +77,35 @@ namespace Codealike.Tests
             await _viewModel.Login();            
             TestMocks.UserDataServiceMock.Verify(u => u.GetUserData(It.IsAny<Credentials>()), Times.Once);
             TestMocks.UserNotificationMock.Verify(u => u.ShowError(AppResources.InvalidOrRestrictedData));
+        }
+
+        [Test]
+        public async void successfull_data_retrieval_should_navigate_to_data_view_model()
+        {
+            BindToSuccessfulLogin();
+            await _viewModel.Login();
+            TestMocks.PageNavigationMock.Verify(p => p.NavigateTo<UserDataViewModel>(), Times.Once);
+        }
+
+        [Test]
+        public async void successfull_data_retrieval_should_pass_data_in_navigation_service()
+        {
+            BindToSuccessfulLogin();
+            await _viewModel.Login();
+            _dictionary.Count.Should().Be(1);
+            _dictionary["UserData"].Should().NotBeNull();
+        }
+
+        private void BindToSuccessfulLogin()
+        {
+            TestMocks.UserDataServiceMock.Setup(u => u.GetUserData(It.IsAny<Credentials>()))
+                .ReturnsTask(new WebApiCallReport<UserData>
+                {
+                    Successful = true,
+                    Content = new UserData()
+                });
+            _viewModel.TokenData = "test/token";
+            _viewModel.UserName = "test";
         }
     }
 }

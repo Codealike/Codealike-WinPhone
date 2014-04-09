@@ -32,6 +32,11 @@ namespace Codealike.WP8.ViewModels
             var webApiCallReport = await _userDataService.GetUserData(credentials);
             if (webApiCallReport.Successful == false)
                 _userNotificationService.ShowError(webApiCallReport.ErrorMessage);
+            else
+            {
+                _pageNavigationService.Data["UserData"] = webApiCallReport.Content;
+                _pageNavigationService.NavigateTo<UserDataViewModel>();
+            }
         }
 
         private Credentials GetCredentials()

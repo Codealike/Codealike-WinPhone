@@ -2,7 +2,7 @@
 {
     using System.Threading.Tasks;
 
-    public interface ILoginViewModel
+    public interface ILoginViewModel: IViewModelBase
     {
         string UserName { get; set; }
 

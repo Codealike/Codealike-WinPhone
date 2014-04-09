@@ -12,6 +12,8 @@
         public override void Load()
         {
             Bind<ILoginViewModel>().To<LoginViewModel>();
+            Bind<IUserDataViewModel>().To<UserDataViewModel>();
+
             Bind<IUserDataService>().ToConstant(new Mock<IUserDataService>().Object);
             Bind<IPageNavigationService>().ToConstant(new Mock<IPageNavigationService>().Object);
             Bind<IUserNotificationService>().ToConstant(new Mock<IUserNotificationService>().Object);

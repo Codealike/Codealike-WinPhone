@@ -1,13 +1,15 @@
-﻿using System;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
-using Codealike.PortableLogic.Communication.ApiModels;
-using Codealike.PortableLogic.Communication.Infrastructure;
-using Newtonsoft.Json;
-
-namespace Codealike.PortableLogic.Communication.Services
+﻿namespace Codealike.PortableLogic.Communication.Services
 {
+    using System;
+    using System.Net;
+    using System.Net.Http;
+    using System.Threading.Tasks;
+
+    using Newtonsoft.Json;
+
+    using ApiModels;
+    using Infrastructure;
+    
     public class UserDataService : IUserDataService
     {
         private readonly IWebClient _webClient;
