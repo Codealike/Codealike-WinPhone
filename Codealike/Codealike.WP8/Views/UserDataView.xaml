@@ -5,17 +5,20 @@
                             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                             xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
                             xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+                            xmlns:viewModels="clr-namespace:Codealike.WP8.ViewModels"
                             FontFamily="{StaticResource PhoneFontFamilyNormal}"
                             FontSize="{StaticResource PhoneFontSizeNormal}"
                             Foreground="{StaticResource PhoneForegroundBrush}"
                             Orientation="Portrait"
                             SupportedOrientations="Portrait"
                             shell:SystemTray.IsVisible="True"
+                            d:DataContext="{d:DesignInstance viewModels:UserDataViewModel}"
                             mc:Ignorable="d">
 
     <phone:PhoneApplicationPage.Resources>
         <SolidColorBrush x:Key="CodingColor" Color="#8CC63F"/>
         <SolidColorBrush x:Key="OutsideIDEColor" Color="#BFFF00"/>
+        <SolidColorBrush x:Key="BuildingColor" Color="#E01BAB"/>
         <SolidColorBrush x:Key="DebuggingColor" Color="#F7A200"/>
     </phone:PhoneApplicationPage.Resources>
     <Grid x:Name="LayoutRoot" Background="{StaticResource CodealikePageBackground}">
@@ -41,45 +44,73 @@
                            Text="Dashboard" />
             </Grid>
             <Grid Grid.Row="1" Margin="10 0">
-                <StackPanel x:Name="Legend"
+                <StackPanel>
+                    <StackPanel x:Name="Legend"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Top"
                             Orientation="Horizontal">
-                    <StackPanel x:Name="CodingOption" Orientation="Horizontal">
-                        <Rectangle Width="4"
+                        <StackPanel x:Name="CodingOption" Orientation="Horizontal">
+                            <Rectangle Width="4"
                                    Height="20"
                                    Margin="0 0 10 0"
                                    Fill="{StaticResource CodingColor}" />
-                        <TextBlock Foreground="{StaticResource CodealikeTextForeground}" Text="Coding" />
-                    </StackPanel>
-                    <StackPanel x:Name="OutsideIDEOption" Margin="20 0 0 0" Orientation="Horizontal">
-                        <Rectangle Width="4"
-                                   Height="20"
-                                   Margin="0 0 10 0"
-                                   Fill="{StaticResource OutsideIDEColor}" />
-                        <TextBlock Foreground="{StaticResource CodealikeTextForeground}" Text="Outside the IDE" />
-                    </StackPanel>
-                    <StackPanel x:Name="DebuggingOption" Margin="20 0 0 0" Orientation="Horizontal">
-                        <Rectangle Width="4"
+                            <TextBlock Foreground="{StaticResource CodealikeTextForeground}" Text="Coding" />
+                        </StackPanel>
+                        <StackPanel x:Name="DebuggingOption" Margin="20 0 0 0" Orientation="Horizontal">
+                            <Rectangle Width="4"
                                    Height="20"
                                    Margin="0 0 10 0"
                                    Fill="{StaticResource DebuggingColor}" />
-                        <TextBlock Foreground="{StaticResource CodealikeTextForeground}" Text="Debugging" />
-                    </StackPanel>
-                   <!-- <StackPanel x:Name="BuildingOption" Margin="10 0 0 0" Orientation="Horizontal">
-                        <Rectangle Width="3"
+                            <TextBlock Foreground="{StaticResource CodealikeTextForeground}" Text="Debugging" />
+                        </StackPanel>
+                        <StackPanel x:Name="BuildingOption" Margin="20 0 0 0" Orientation="Horizontal">
+                            <Rectangle Width="4"
                                    Height="20"
-                                   Margin="0 0 5 0"
-                                   Fill="Green" />
-                        <TextBlock Foreground="{StaticResource CodealikeTextForeground}" Text="Building" />
+                                   Margin="0 0 10 0"
+                                   Fill="{StaticResource BuildingColor}" />
+                            <TextBlock Foreground="{StaticResource CodealikeTextForeground}" Text="Building" />
+                        </StackPanel>
                     </StackPanel>
-                    <StackPanel x:Name="SystemOption" Margin="10 0 0 0" Orientation="Horizontal">
-                        <Rectangle Width="3"
-                                   Height="20"
-                                   Margin="0 0 5 0"
-                                   Fill="Green" />
-                        <TextBlock Foreground="{StaticResource CodealikeTextForeground}" Text="System" />
-                    </StackPanel>-->
+                    <StackPanel x:Name="BarCharts" HorizontalAlignment="Left">
+                        <StackPanel.Resources>
+                            <Style TargetType="StackPanel">
+                                <Setter Property="Margin" Value="0 10"></Setter>
+                            </Style>
+                            <Style TargetType="Rectangle" x:Key="BarChartRectangle">
+                                <Setter Property="Margin" Value="0 0 10 0"></Setter>
+                                <Setter Property="Height" Value="22"></Setter>
+                                <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+                            </Style>
+                            <Style TargetType="TextBlock" x:Key="PercentageStyle">
+                                <Setter Property="Foreground" Value="{StaticResource CodealikeTextForeground}"></Setter>
+                                <Setter Property="FontSize" Value="20"></Setter>
+                            </Style>
+                        </StackPanel.Resources>
+                        <StackPanel x:Name="CodingPanel">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Style="{StaticResource PercentageStyle}" Text="{Binding UserData.ActivityPercentage.Coding, Mode=TwoWay}"><Run>%</Run></TextBlock>
+                                <TextBlock Style="{StaticResource PercentageStyle}" Text="%"></TextBlock>
+                            </StackPanel>
+                            <Rectangle x:Name="CodingBar" Width="{Binding UserData.ActivityPercentage.Coding, Mode=TwoWay}" Style="{StaticResource BarChartRectangle}"
+                                   Fill="{StaticResource CodingColor}" />
+                        </StackPanel>
+                        <StackPanel x:Name="DebuggingPanel">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock x:Name="DebuggingPercentage" Style="{StaticResource PercentageStyle}" Text="{Binding UserData.ActivityPercentage.Debugging, Mode=TwoWay}"></TextBlock>
+                                <TextBlock Style="{StaticResource PercentageStyle}" Text="%"></TextBlock>
+                            </StackPanel>
+                            <Rectangle x:Name="DebuggingBar" Width="{Binding UserData.ActivityPercentage.Debugging, Mode=TwoWay}" Style="{StaticResource BarChartRectangle}"
+                                   Fill="{StaticResource DebuggingColor}" />
+                        </StackPanel>
+                        <StackPanel x:Name="OutsideIDEPanel">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Style="{StaticResource PercentageStyle}" Text="{Binding UserData.ActivityPercentage.Building, Mode=TwoWay}"><Run>%</Run></TextBlock>
+                                <TextBlock Style="{StaticResource PercentageStyle}" Text="%"></TextBlock>
+                            </StackPanel>
+                            <Rectangle x:Name="BuildingBar" Width="{Binding UserData.ActivityPercentage.Building, Mode=TwoWay}" Style="{StaticResource BarChartRectangle}"
+                                   Fill="{StaticResource OutsideIDEColor}" />
+                        </StackPanel>
+                    </StackPanel>
                 </StackPanel>
             </Grid>
         </Grid>

@@ -48,15 +48,23 @@
 
         private async Task LoginUser(Credentials credentials)
         {
-            var webApiCallReport = await _userDataService.GetUserData(credentials);
-            if (webApiCallReport.Successful == false)
-                _userNotificationService.ShowError(webApiCallReport.ErrorMessage);
-            else
+            IsBusy = true;
+            try
             {
-                _pageNavigationService.Data["UserData"] = webApiCallReport.Content;
-                _appRepository.SaveCredentials(credentials);
-                _pageNavigationService.NavigateTo<UserDataViewModel>();
+                var webApiCallReport = await _userDataService.GetUserData(credentials);
+                if ( webApiCallReport.Successful == false )
+                    _userNotificationService.ShowError(webApiCallReport.ErrorMessage);
+                else
+                {
+                    _pageNavigationService.Data["UserData"] = webApiCallReport.Content;
+                    _appRepository.SaveCredentials(credentials);
+                    _pageNavigationService.NavigateTo<UserDataViewModel>();
+                }
             }
+            catch (Exception)
+            {
+            }
+            IsBusy = false;
         }
 
         private Credentials GetCredentials()

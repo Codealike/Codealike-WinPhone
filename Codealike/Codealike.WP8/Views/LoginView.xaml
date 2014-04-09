@@ -39,6 +39,9 @@
                                                  Text="submit"
                                                  micro:Message.Attach="[Event Click]=[Action Login]" />
         </bindableAppBar:BindableAppBar>
+        <Grid Height="10" VerticalAlignment="Top">
+            <ProgressBar IsIndeterminate="True" Visibility="{Binding IsBusy, Converter={StaticResource BooleanToVisibilityConverter}}"></ProgressBar>
+        </Grid>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="3*" />

@@ -6,6 +6,7 @@
     public class UserDataViewModel : ViewModelBase, IUserDataViewModel
     {
         private readonly IPageNavigationService _pageNavigationService;
+        private UserData _userData;
 
         public UserDataViewModel(IPageNavigationService pageNavigationService) : base(pageNavigationService)
         {
@@ -18,6 +19,15 @@
             UserData = _pageNavigationService.Data["UserData"] as UserData;
         }
 
-        public UserData UserData { get; set; }
+        public UserData UserData
+        {
+            get { return _userData; }
+            set
+            {
+                if (Equals(value, _userData)) return;
+                _userData = value;
+                NotifyOfPropertyChange(() => UserData);
+            }
+        }
     }
 }

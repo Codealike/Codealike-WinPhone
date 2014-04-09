@@ -3,17 +3,17 @@ using Codealike.WP8.Repositories;
 
 namespace Codealike.WP8.Tools
 {
-    using System;
-    using System.Windows.Controls;
-    using Microsoft.Phone.Controls;
-    using System.Collections.Generic;
+	using System;
+	using System.Windows.Controls;
+	using Microsoft.Phone.Controls;
+	using System.Collections.Generic;
 
-    using Caliburn.Micro;
+	using Caliburn.Micro;
 
-    using ViewModels;
-    using PortableLogic.Tools;
-    using PortableLogic.Communication.Services;
-    using PortableLogic.Communication.Infrastructure;
+	using ViewModels;
+	using PortableLogic.Tools;
+	using PortableLogic.Communication.Services;
+	using PortableLogic.Communication.Infrastructure;
 
 	public class AppBootstrapper : PhoneBootstrapperBase
 	{
@@ -33,11 +33,11 @@ namespace Codealike.WP8.Tools
 			_container.PerRequest<LoginViewModel>();
 			_container.PerRequest<UserDataViewModel>();
 
-            _container.RegisterPerRequest(typeof(IWebClient), "WebClient", typeof(WebClient));
-            _container.RegisterPerRequest(typeof(IUserDataService), "UserDataService", typeof(UserDataService));
-            _container.RegisterSingleton(typeof(IPageNavigationService), "PageNavigationService", typeof(PageNavigationService));
-            _container.RegisterPerRequest(typeof(IAppRepository), "AppRepository", typeof(AppRepository));
-            _container.RegisterPerRequest(typeof(IUserNotificationService), "UserNotificationService", typeof(UserNotificationService));
+			_container.RegisterPerRequest(typeof(IWebClient), "WebClient", typeof(WebClient));
+			_container.RegisterPerRequest(typeof(IUserDataService), "UserDataService", typeof(UserDataService));
+			_container.RegisterSingleton(typeof(IPageNavigationService), "PageNavigationService", typeof(PageNavigationService));
+			_container.RegisterPerRequest(typeof(IAppRepository), "AppRepository", typeof(AppRepository));
+			_container.RegisterPerRequest(typeof(IUserNotificationService), "UserNotificationService", typeof(UserNotificationService));
 
 			AddCustomConventions();
 		}
