@@ -32,9 +32,9 @@
             _helpIsNotOpened = !_helpIsNotOpened;
         }
 
-        private void OpenSettingsPage(object sender, GestureEventArgs e)
+        private async void OpenSettingsPage(object sender, GestureEventArgs e)
         {
-            Launcher.LaunchUriAsync(new Uri("https://codealike.com/Settings/Account"));
+            await Launcher.LaunchUriAsync(new Uri("https://codealike.com/Settings/Account"));
         }
     }
 }

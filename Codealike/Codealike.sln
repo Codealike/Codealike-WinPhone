@@ -7,10 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codealike.WP8", "Codealike.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codealike.PortableLogic", "Codealike.PortableLogic\Codealike.PortableLogic.csproj", "{807B8E84-E9FB-468E-821E-F1AF8B568EBE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codealike.Tests", "Codealike.Tests\Codealike.Tests.csproj", "{CDFFB997-ECCC-41C5-A80E-5AA6497A3221}"
+EndProject
 Global
-	GlobalSection(CodealikeProperties) = postSolution
-		SolutionGuid = 2ca53387-26d6-4c9d-a553-9aca163371d8
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|ARM = Debug|ARM
@@ -46,8 +45,19 @@ Global
 		{807B8E84-E9FB-468E-821E-F1AF8B568EBE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{807B8E84-E9FB-468E-821E-F1AF8B568EBE}.Release|ARM.ActiveCfg = Release|Any CPU
 		{807B8E84-E9FB-468E-821E-F1AF8B568EBE}.Release|x86.ActiveCfg = Release|Any CPU
+		{CDFFB997-ECCC-41C5-A80E-5AA6497A3221}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDFFB997-ECCC-41C5-A80E-5AA6497A3221}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDFFB997-ECCC-41C5-A80E-5AA6497A3221}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{CDFFB997-ECCC-41C5-A80E-5AA6497A3221}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CDFFB997-ECCC-41C5-A80E-5AA6497A3221}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDFFB997-ECCC-41C5-A80E-5AA6497A3221}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDFFB997-ECCC-41C5-A80E-5AA6497A3221}.Release|ARM.ActiveCfg = Release|Any CPU
+		{CDFFB997-ECCC-41C5-A80E-5AA6497A3221}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(CodealikeProperties) = postSolution
+		SolutionGuid = 2ca53387-26d6-4c9d-a553-9aca163371d8
 	EndGlobalSection
 EndGlobal

@@ -96,6 +96,8 @@
     <Compile Include="Tools\AppBootstrapper.cs" />
     <Compile Include="Models\LocalizedStrings.cs" />
     <Compile Include="Tools\PageNavigationService.cs" />
+    <Compile Include="Tools\UserNotificationService.cs" />
+    <Compile Include="ViewModels\ILoginViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>

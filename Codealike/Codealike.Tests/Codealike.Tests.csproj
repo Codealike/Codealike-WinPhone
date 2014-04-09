@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CDFFB997-ECCC-41C5-A80E-5AA6497A3221}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Codealike.Tests</RootNamespace>
+    <AssemblyName>Codealike.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Caliburn.Micro">
+      <HintPath>..\packages\Caliburn.Micro.1.5.2\lib\wp8\Caliburn.Micro.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentAssertions">
+      <HintPath>..\packages\FluentAssertions.2.2.0.0\lib\net45\FluentAssertions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Phone">
+      <HintPath>..\lib\Microsoft.Phone.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq">
+      <HintPath>..\packages\Moq.4.2.1402.2112\lib\net40\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows">
+      <HintPath>..\lib\System.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Caliburn.Micro.1.5.2\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="LoginTests.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestUtils\Bindings.cs" />
+    <Compile Include="TestUtils\NinjectIoC.cs" />
+    <Compile Include="TestUtils\SetupExtensions.cs" />
+    <Compile Include="TestUtils\TestMocks.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Codealike.PortableLogic\Codealike.PortableLogic.csproj">
+      <Project>{807B8E84-E9FB-468E-821E-F1AF8B568EBE}</Project>
+      <Name>Codealike.PortableLogic</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Codealike.WP8\Codealike.WP8.csproj">
+      <Project>{c9e5ab25-be86-4876-99e3-689a040ef1c0}</Project>
+      <Name>Codealike.WP8</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

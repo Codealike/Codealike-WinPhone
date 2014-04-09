@@ -1,17 +1,20 @@
-using System;
-using System.Collections.Generic;
-using System.Windows.Controls;
-using Caliburn.Micro;
-using Codealike.PortableLogic.Communication.Infrastructure;
-using Codealike.PortableLogic.Communication.Services;
-using Codealike.WP8.ViewModels;
-using Microsoft.Phone.Controls;
-
 namespace Codealike.WP8.Tools
 {
+    using System;
+    using System.Windows.Controls;
+    using Microsoft.Phone.Controls;
+    using System.Collections.Generic;
+
+    using Caliburn.Micro;
+
+    using ViewModels;
+    using PortableLogic.Tools;
+    using PortableLogic.Communication.Services;
+    using PortableLogic.Communication.Infrastructure;
+
 	public class AppBootstrapper : PhoneBootstrapperBase
 	{
-		PhoneContainer container;
+		PhoneContainer _container;
 
 		public AppBootstrapper()
 		{
@@ -20,21 +23,23 @@ namespace Codealike.WP8.Tools
 
 		protected override void Configure()
 		{
-			container = new PhoneContainer();
+			_container = new PhoneContainer();
 			if (!Execute.InDesignMode)
-				container.RegisterPhoneServices(RootFrame);
+				_container.RegisterPhoneServices(RootFrame);
 
-			container.PerRequest<LoginViewModel>();
+			_container.PerRequest<LoginViewModel>();
 
-            container.RegisterPerRequest(typeof(IWebClient), "WebClient", typeof(WebClient));
-            container.RegisterPerRequest(typeof(IUserDataService), "UserDataService", typeof(UserDataService));
+            _container.RegisterPerRequest(typeof(IWebClient), "WebClient", typeof(WebClient));
+            _container.RegisterPerRequest(typeof(IUserDataService), "UserDataService", typeof(UserDataService));
+            _container.RegisterPerRequest(typeof(IUserNotificationService), "UserNotificationService", typeof(UserNotificationService));
+            _container.RegisterSingleton(typeof(IPageNavigationService), "PageNavigationService", typeof(PageNavigationService));
 
 			AddCustomConventions();
 		}
 
 		protected override object GetInstance(Type service, string key)
 		{
-			var instance = container.GetInstance(service, key);
+			var instance = _container.GetInstance(service, key);
 			if (instance != null)
 				return instance;
 
@@ -43,12 +48,12 @@ namespace Codealike.WP8.Tools
 
 		protected override IEnumerable<object> GetAllInstances(Type service)
 		{
-			return container.GetAllInstances(service);
+			return _container.GetAllInstances(service);
 		}
 
 		protected override void BuildUp(object instance)
 		{
-			container.BuildUp(instance);
+			_container.BuildUp(instance);
 		}
 
 		static void AddCustomConventions()

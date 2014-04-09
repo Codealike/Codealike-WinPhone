@@ -4,15 +4,17 @@
                             xmlns:bindableAppBar="clr-namespace:Caliburn.Micro.BindableAppBar;assembly=Caliburn.Micro.BindableAppBar"
                             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                            xmlns:micro="clr-namespace:Caliburn.Micro;assembly=Caliburn.Micro"
                             xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
                             xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
-                            xmlns:micro="clr-namespace:Caliburn.Micro;assembly=Caliburn.Micro"
+                            xmlns:viewModels="clr-namespace:Codealike.WP8.ViewModels"
                             FontFamily="{StaticResource PhoneFontFamilyNormal}"
                             FontSize="{StaticResource PhoneFontSizeNormal}"
                             Foreground="{StaticResource PhoneForegroundBrush}"
                             Orientation="Portrait"
                             SupportedOrientations="Portrait"
                             shell:SystemTray.IsVisible="True"
+                            d:DataContext="{d:DesignInstance viewModels:LoginViewModel}"
                             mc:Ignorable="d">
     <phone:PhoneApplicationPage.Resources>
         <Style TargetType="TextBlock">
@@ -32,7 +34,10 @@
     </phone:PhoneApplicationPage.Resources>
     <Grid x:Name="LayoutRoot" Background="{StaticResource CodealikePageBackground}">
         <bindableAppBar:BindableAppBar BackgroundColor="#F47723">
-            <bindableAppBar:BindableAppBarButton x:Name="Login" micro:Message.Attach="[Event Click]=[Action Login]" IconUri="/Assets/AppBarIcons/check.png" Text="submit" />
+            <bindableAppBar:BindableAppBarButton x:Name="Login"
+                                                 IconUri="/Assets/AppBarIcons/check.png"
+                                                 Text="submit"
+                                                 micro:Message.Attach="[Event Click]=[Action Login]" />
         </bindableAppBar:BindableAppBar>
         <Grid>
             <Grid.RowDefinitions>
@@ -57,8 +62,8 @@
             </Grid>
             <Grid Grid.Row="1" Width="300">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="45*" />
-                    <RowDefinition Height="65*" />
+                    <RowDefinition Height="50*" />
+                    <RowDefinition Height="50*" />
                 </Grid.RowDefinitions>
                 <StackPanel x:Name="HelpText"
                             Grid.Row="1"
@@ -68,18 +73,18 @@
                     <StackPanel.RenderTransform>
                         <CompositeTransform />
                     </StackPanel.RenderTransform>
-                    <TextBlock RenderTransformOrigin="0.5,0.5"
+                    <TextBlock FontSize="18"
+                               RenderTransformOrigin="0.5,0.5"
                                Text="In order to fill these fields, you must go to your"
                                TextAlignment="Center"
-                               FontSize="18"
                                TextWrapping="Wrap" />
                     <HyperlinkButton Content="Codealike settings"
                                      FontSize="20"
-                                     Tap="OpenSettingsPage"
-                                     Foreground="#F47723" />
-                    <TextBlock Text="and copy/paste the username and public API token in these fields"
+                                     Foreground="#F47723"
+                                     Tap="OpenSettingsPage" />
+                    <TextBlock FontSize="18"
+                               Text="and copy/paste the username and public API token in these fields"
                                TextAlignment="Center"
-                               FontSize="18"
                                TextWrapping="Wrap" />
                 </StackPanel>
 
@@ -88,16 +93,27 @@
                             HorizontalAlignment="Center"
                             Background="{StaticResource CodealikePageBackground}">
                     <TextBlock HorizontalAlignment="Center" Text="username" />
-                    <TextBox x:Name="UserName" Margin="0 5 0 20" Style="{StaticResource CustomTextBoxWithRoundedCorners}" />
+                    <TextBox x:Name="UserName"
+                             Margin="0 5 0 20"
+                             Style="{StaticResource CustomTextBoxWithRoundedCorners}" />
                     <TextBlock HorizontalAlignment="Center" Text="codealike token" />
-                    <TextBox x:Name="TokenData" Margin="0 5"
+                    <TextBox x:Name="TokenData"
+                             Margin="0 5"
                              BorderBrush="Gray"
                              Style="{StaticResource CustomTextBoxWithRoundedCorners}" />
-                    <HyperlinkButton Margin="0 0 0 20"
+                    <TextBlock x:Name="ErrorMessage"
+                               Margin="0 0 0 0 "
+                               HorizontalAlignment="Center"
+                               FontSize="16" 
+                               Foreground="Red"
+                               Visibility="{Binding ErrorIsVisible,
+                                                    Converter={StaticResource BooleanToVisibilityConverter}}" />
+                    <HyperlinkButton Margin="0 0 0 0"
                                      VerticalAlignment="Bottom"
                                      Content="help"
                                      Foreground="#F47723"
                                      Tap="OnHelpTapped" />
+                   
                 </StackPanel>
             </Grid>
         </Grid>
