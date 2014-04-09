@@ -1,10 +1,10 @@
-﻿using System;
-using System.Windows;
-using System.Windows.Input;
-using Windows.System;
-
-namespace Codealike.WP8.Views
+﻿namespace Codealike.WP8.Views
 {
+    using System;
+    using System.Windows;
+    using Windows.System;
+    using System.Windows.Input;
+
     public partial class LoginView
     {
         private bool _helpIsNotOpened;

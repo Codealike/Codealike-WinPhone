@@ -2,10 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Controls;
 using Caliburn.Micro;
+using Codealike.PortableLogic.Communication.Infrastructure;
+using Codealike.PortableLogic.Communication.Services;
 using Codealike.WP8.ViewModels;
 using Microsoft.Phone.Controls;
 
-namespace Codealike.WP8.Models
+namespace Codealike.WP8.Tools
 {
 	public class AppBootstrapper : PhoneBootstrapperBase
 	{
@@ -23,6 +25,9 @@ namespace Codealike.WP8.Models
 				container.RegisterPhoneServices(RootFrame);
 
 			container.PerRequest<LoginViewModel>();
+
+            container.RegisterPerRequest(typeof(IWebClient), "WebClient", typeof(WebClient));
+            container.RegisterPerRequest(typeof(IUserDataService), "UserDataService", typeof(UserDataService));
 
 			AddCustomConventions();
 		}

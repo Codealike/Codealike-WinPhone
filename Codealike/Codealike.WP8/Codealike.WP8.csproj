@@ -93,7 +93,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\AppBootstrapper.cs" />
+    <Compile Include="Tools\AppBootstrapper.cs" />
     <Compile Include="Models\LocalizedStrings.cs" />
     <Compile Include="Tools\PageNavigationService.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />

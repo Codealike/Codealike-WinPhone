@@ -6,6 +6,7 @@
                             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                             xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
                             xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+                            xmlns:micro="clr-namespace:Caliburn.Micro;assembly=Caliburn.Micro"
                             FontFamily="{StaticResource PhoneFontFamilyNormal}"
                             FontSize="{StaticResource PhoneFontSizeNormal}"
                             Foreground="{StaticResource PhoneForegroundBrush}"
@@ -31,7 +32,7 @@
     </phone:PhoneApplicationPage.Resources>
     <Grid x:Name="LayoutRoot" Background="{StaticResource CodealikePageBackground}">
         <bindableAppBar:BindableAppBar BackgroundColor="#F47723">
-            <bindableAppBar:BindableAppBarButton IconUri="/Assets/AppBarIcons/check.png" Text="submit" />
+            <bindableAppBar:BindableAppBarButton x:Name="Login" micro:Message.Attach="[Event Click]=[Action Login]" IconUri="/Assets/AppBarIcons/check.png" Text="submit" />
         </bindableAppBar:BindableAppBar>
         <Grid>
             <Grid.RowDefinitions>
@@ -87,9 +88,9 @@
                             HorizontalAlignment="Center"
                             Background="{StaticResource CodealikePageBackground}">
                     <TextBlock HorizontalAlignment="Center" Text="username" />
-                    <TextBox Margin="0 5 0 20" Style="{StaticResource CustomTextBoxWithRoundedCorners}" />
+                    <TextBox x:Name="UserName" Margin="0 5 0 20" Style="{StaticResource CustomTextBoxWithRoundedCorners}" />
                     <TextBlock HorizontalAlignment="Center" Text="codealike token" />
-                    <TextBox Margin="0 5"
+                    <TextBox x:Name="TokenData" Margin="0 5"
                              BorderBrush="Gray"
                              Style="{StaticResource CustomTextBoxWithRoundedCorners}" />
                     <HyperlinkButton Margin="0 0 0 20"
