@@ -98,11 +98,15 @@
     <Compile Include="Models\LocalizedStrings.cs" />
     <Compile Include="Tools\PageNavigationService.cs" />
     <Compile Include="Tools\UserNotificationService.cs" />
+    <Compile Include="ViewModels\ExtendedSplashViewModel.cs" />
     <Compile Include="ViewModels\IUserDataViewModel.cs" />
     <Compile Include="ViewModels\IViewModelBase.cs" />
     <Compile Include="ViewModels\UserDataViewModel.cs" />
     <Compile Include="ViewModels\ILoginViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="Views\ExtendedSplashView.xaml.cs">
+      <DependentUpon>ExtendedSplashView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
@@ -123,6 +127,10 @@
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
     <Page Include="Resources\AppStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ExtendedSplashView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

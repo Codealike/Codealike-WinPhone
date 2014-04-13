@@ -24,15 +24,16 @@
             CodingBar.Width = 0;
             DebuggingBar.Width = 0;
             BuildingBar.Width = 0;
-            for ( int i = 0; i < 100; i++ )
+            var progressCount = 50;
+            for ( int i = 0; i < progressCount; i++ )
             {
-                CodingBar.Width += ( _viewModel.UserData.ActivityPercentage.Coding * 3 ) / 100;
-                DebuggingBar.Width += ( _viewModel.UserData.ActivityPercentage.Debugging * 3 ) / 100;
-                BuildingBar.Width += ( _viewModel.UserData.ActivityPercentage.Building * 3 ) / 100;
+                CodingBar.Width += ( _viewModel.UserData.ActivityPercentage.Coding * 3 ) / progressCount;
+                DebuggingBar.Width += ( _viewModel.UserData.ActivityPercentage.Debugging * 3 ) / progressCount;
+                BuildingBar.Width += ( _viewModel.UserData.ActivityPercentage.Building * 3 ) / progressCount;
 
-                CodingPercentage.Text = ( ( _viewModel.UserData.ActivityPercentage.Coding * i ) / 100 ).ToString("F");
-                DebuggingPercentage.Text = ( ( _viewModel.UserData.ActivityPercentage.Debugging * i ) / 100 ).ToString("F");
-                BuildingPercentage.Text = ( ( _viewModel.UserData.ActivityPercentage.Building * i ) / 100 ).ToString("F");
+                CodingPercentage.Text = ( ( _viewModel.UserData.ActivityPercentage.Coding * i ) / progressCount ).ToString("F");
+                DebuggingPercentage.Text = ( ( _viewModel.UserData.ActivityPercentage.Debugging * i ) / progressCount ).ToString("F");
+                BuildingPercentage.Text = ( ( _viewModel.UserData.ActivityPercentage.Building * i ) / progressCount ).ToString("F");
                 await Task.Delay(1);
             }
             /*CodingBar.Width = _viewModel.UserData.ActivityPercentage.Coding * 3;

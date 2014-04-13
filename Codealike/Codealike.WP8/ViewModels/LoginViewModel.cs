@@ -22,6 +22,7 @@
             _pageNavigationService = pageNavigationService;
             _userNotificationService = userNotificationService;
             _appRepository = appRepository;
+            TokenData = "bogdan/aa8d8752-7404-46ab-b55f-4b40fc8b60e7";
         }
 
 
