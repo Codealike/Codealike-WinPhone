@@ -32,6 +32,7 @@ namespace Codealike.WP8.Tools
 
 			_container.PerRequest<LoginViewModel>();
 			_container.PerRequest<UserDataViewModel>();
+			_container.PerRequest<ExtendedSplashViewModel>();
 
 			_container.RegisterPerRequest(typeof(IWebClient), "WebClient", typeof(WebClient));
 			_container.RegisterPerRequest(typeof(IUserDataService), "UserDataService", typeof(UserDataService));

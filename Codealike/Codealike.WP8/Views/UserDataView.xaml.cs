@@ -13,9 +13,10 @@
             Loaded += UserDataView_Loaded;
         }
 
-        void UserDataView_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        async void UserDataView_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
             _viewModel = DataContext as IUserDataViewModel;
+            if (_viewModel != null) await _viewModel.LoadData();
             InitializeUI();
         }
 

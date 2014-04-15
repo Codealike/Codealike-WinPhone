@@ -60,7 +60,7 @@
                 writer.Close();
                 writeStream.Close();
             }
-            catch ( Exception exception )
+            catch (Exception)
             {
             }
         }
@@ -81,7 +81,7 @@
 
                 return data;
             }
-            catch ( Exception exception )
+            catch (Exception)
             {
                 return null;
             }

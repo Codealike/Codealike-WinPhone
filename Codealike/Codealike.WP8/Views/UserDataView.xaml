@@ -13,6 +13,8 @@
                             SupportedOrientations="Portrait"
                             d:DataContext="{d:DesignInstance viewModels:UserDataViewModel}"
                             shell:SystemTray.IsVisible="True"
+                            shell:SystemTray.BackgroundColor="White"
+                            shell:SystemTray.ForegroundColor="Black"
                             mc:Ignorable="d">
 
     <phone:PhoneApplicationPage.Resources>
@@ -22,6 +24,9 @@
         <SolidColorBrush x:Key="DebuggingColor" Color="#F7A200" />
     </phone:PhoneApplicationPage.Resources>
     <Grid x:Name="LayoutRoot" Background="{StaticResource CodealikePageBackground}">
+        <Grid Height="10" VerticalAlignment="Top">
+            <ProgressBar IsIndeterminate="True" Height="10" Visibility="{Binding IsBusy, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"></ProgressBar>
+        </Grid>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="15*" />
@@ -82,7 +87,7 @@
                                 <Setter Property="Margin" Value="0 10" />
                             </Style>
                             <Style x:Key="BarChartRectangle" TargetType="Rectangle">
-                                <Setter Property="Margin" Value="0 0 10 0" />
+                                <Setter Property="Margin" Value="0 0 5 0" />
                                 <Setter Property="Height" Value="22" />
                                 <Setter Property="HorizontalAlignment" Value="Left" />
                             </Style>
@@ -94,39 +99,52 @@
                         <StackPanel x:Name="CodingPanel">
                             <TextBlock Foreground="{StaticResource CodealikeTextForeground}" Text="Coding" />
                             <StackPanel Orientation="Horizontal">
+                                <Rectangle x:Name="CodingBar"
+                                           Fill="{StaticResource CodingColor}"
+                                           Style="{StaticResource BarChartRectangle}" />
                                 <TextBlock x:Name="CodingPercentage"
-                                           Style="{StaticResource PercentageStyle}">
-                                </TextBlock>
-                                <TextBlock Style="{StaticResource PercentageStyle}" Text="%" />
+                                           Margin="10 0 0 0"
+                                           Style="{StaticResource PercentageStyle}" />
+                                <TextBlock Style="{StaticResource PercentageStyle}"
+                                           Text="%"
+                                           Visibility="{Binding IsLoaded,
+                                                                Mode=TwoWay,
+                                                                Converter={StaticResource BooleanToVisibilityConverter}}" />
                             </StackPanel>
-                            <Rectangle x:Name="CodingBar"
-                                       Fill="{StaticResource CodingColor}"
-                                       Style="{StaticResource BarChartRectangle}" />
+
                         </StackPanel>
                         <StackPanel x:Name="DebuggingPanel">
                             <TextBlock Foreground="{StaticResource CodealikeTextForeground}" Text="Debugging" />
                             <StackPanel Orientation="Horizontal">
+                                <Rectangle x:Name="DebuggingBar"
+                                           Fill="{StaticResource DebuggingColor}"
+                                           Style="{StaticResource BarChartRectangle}" />
                                 <TextBlock x:Name="DebuggingPercentage"
-                                           Style="{StaticResource PercentageStyle}"
-                                           />
-                                <TextBlock Style="{StaticResource PercentageStyle}" Text="%" />
+                                           Margin="10 0 0 0"
+                                           Style="{StaticResource PercentageStyle}" />
+                                <TextBlock Style="{StaticResource PercentageStyle}"
+                                           Text="%"
+                                           Visibility="{Binding IsLoaded,
+                                                                Mode=TwoWay,
+                                                                Converter={StaticResource BooleanToVisibilityConverter}}" />
                             </StackPanel>
-                            <Rectangle x:Name="DebuggingBar"
-                                       Fill="{StaticResource DebuggingColor}"
-                                       Style="{StaticResource BarChartRectangle}" />
                         </StackPanel>
                         <StackPanel x:Name="BuildingPanel">
                             <TextBlock Foreground="{StaticResource CodealikeTextForeground}" Text="Building" />
                             <StackPanel Orientation="Horizontal">
+                                <Rectangle x:Name="BuildingBar"
+                                           Fill="{StaticResource OutsideIDEColor}"
+                                           Style="{StaticResource BarChartRectangle}" />
                                 <TextBlock x:Name="BuildingPercentage"
-                                           Style="{StaticResource PercentageStyle}"
-                                           >
-                                </TextBlock>
-                                <TextBlock Style="{StaticResource PercentageStyle}" Text="%" />
+                                           Margin="10 0 0 0"
+                                           Style="{StaticResource PercentageStyle}" />
+                                <TextBlock Style="{StaticResource PercentageStyle}"
+                                           Text="%"
+                                           Visibility="{Binding IsLoaded,
+                                                                Mode=TwoWay,
+                                                                Converter={StaticResource BooleanToVisibilityConverter}}" />
                             </StackPanel>
-                            <Rectangle x:Name="BuildingBar"
-                                       Fill="{StaticResource OutsideIDEColor}"
-                                       Style="{StaticResource BarChartRectangle}" />
+
                         </StackPanel>
                     </StackPanel>
                 </StackPanel>
