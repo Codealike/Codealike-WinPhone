@@ -1,13 +1,15 @@
-﻿namespace Codealike.WP8.Views
+﻿using System;
+
+namespace Codealike.WP8.Views
 {
     using System.Threading.Tasks;
     
     using ViewModels;
 
-    public partial class UserDataView
+    public partial class UserFactsView
     {
-        private IUserDataViewModel _viewModel;
-        public UserDataView()
+        private IUserFactsViewModel _viewModel;
+        public UserFactsView()
         {
             InitializeComponent();
             Loaded += UserDataView_Loaded;
@@ -15,7 +17,7 @@
 
         async void UserDataView_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
-            _viewModel = DataContext as IUserDataViewModel;
+            _viewModel = DataContext as IUserFactsViewModel;
             if (_viewModel != null) await _viewModel.LoadData();
             InitializeUI();
         }
@@ -40,6 +42,12 @@
             /*CodingBar.Width = _viewModel.UserData.ActivityPercentage.Coding * 3;
             DebuggingBar.Width = _viewModel.UserData.ActivityPercentage.Debugging * 3;
             BuildingBar.Width = _viewModel.UserData.ActivityPercentage.Building * 3;*/
+        }
+
+        private async void RefreshData(object sender, EventArgs e)
+        {
+            await _viewModel.LoadData();
+            InitializeUI();
         }
     }
 }

@@ -3,7 +3,7 @@ using Codealike.PortableLogic.Communication.ApiModels;
 
 namespace Codealike.WP8.ViewModels
 {
-    public interface IUserDataViewModel: IViewModelBase
+    public interface IUserFactsViewModel: IViewModelBase
     {
         UserData UserData { get; set; }
         Task LoadData();

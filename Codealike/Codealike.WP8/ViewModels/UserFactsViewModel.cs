@@ -1,14 +1,13 @@
-﻿using System;
-using System.Threading.Tasks;
-using Codealike.PortableLogic.Communication.Services;
-using Codealike.PortableLogic.Repositories;
-
-namespace Codealike.WP8.ViewModels
+﻿namespace Codealike.WP8.ViewModels
 {
+    using System;
+    using System.Threading.Tasks;
+    using PortableLogic.Communication.Services;
+    using PortableLogic.Repositories;
     using PortableLogic.Tools;
     using PortableLogic.Communication.ApiModels;
 
-    public class UserDataViewModel : ViewModelBase, IUserDataViewModel
+    public class UserFactsViewModel : ViewModelBase, IUserFactsViewModel
     {
         private readonly IPageNavigationService _pageNavigationService;
         private readonly IUserDataService _userDataService;
@@ -17,12 +16,14 @@ namespace Codealike.WP8.ViewModels
         private UserData _userData;
         private bool _isLoaded;
 
-        public UserDataViewModel(IPageNavigationService pageNavigationService, IUserDataService userDataService, IAppRepository appRepository, IUserNotificationService userNotificationService) : base(pageNavigationService)
+        public UserFactsViewModel(IPageNavigationService pageNavigationService, IUserDataService userDataService, IAppRepository appRepository, IUserNotificationService userNotificationService)
+            : base(pageNavigationService)
         {
             _pageNavigationService = pageNavigationService;
             _userDataService = userDataService;
             _appRepository = appRepository;
             _userNotificationService = userNotificationService;
+            DisplayName = "Behavior facts";
         }
 
         protected override void OnActivate()
@@ -33,9 +34,9 @@ namespace Codealike.WP8.ViewModels
                 UserData = _pageNavigationService.Data["UserData"] as UserData;
                 IsLoaded = true;
             }
-            catch (Exception)
+            catch ( Exception )
             {
-                
+
             }
         }
 
@@ -44,7 +45,8 @@ namespace Codealike.WP8.ViewModels
             get { return _userData; }
             set
             {
-                if (Equals(value, _userData)) return;
+                if ( Equals(value, _userData) )
+                    return;
                 _userData = value;
                 NotifyOfPropertyChange(() => UserData);
             }
@@ -55,7 +57,8 @@ namespace Codealike.WP8.ViewModels
             get { return _isLoaded; }
             set
             {
-                if (value.Equals(_isLoaded)) return;
+                if ( value.Equals(_isLoaded) )
+                    return;
                 _isLoaded = value;
                 NotifyOfPropertyChange(() => IsLoaded);
             }
@@ -67,10 +70,10 @@ namespace Codealike.WP8.ViewModels
             try
             {
                 var credentials = _appRepository.LoadCredentials();
-                if (credentials == null)
+                if ( credentials == null )
                     return;
                 var webApiCallReport = await _userDataService.GetUserData(credentials);
-                if (webApiCallReport.Successful == false)
+                if ( webApiCallReport.Successful == false )
                     _userNotificationService.ShowError(webApiCallReport.ErrorMessage);
                 else
                 {
@@ -80,7 +83,7 @@ namespace Codealike.WP8.ViewModels
                     _appRepository.SaveCredentials(credentials);
                 }
             }
-            catch (Exception)
+            catch ( Exception )
             {
             }
             finally

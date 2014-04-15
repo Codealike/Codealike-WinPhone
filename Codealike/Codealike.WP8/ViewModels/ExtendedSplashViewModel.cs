@@ -20,7 +20,7 @@ namespace Codealike.WP8.ViewModels
             base.OnActivate();
             var credentials = _appRepository.LoadCredentials();
             if ( credentials != null )
-                _pageNavigationService.NavigateTo<UserDataViewModel>();
+                _pageNavigationService.NavigateTo<DashboardViewModel>();
             else _pageNavigationService.NavigateTo<LoginViewModel>();
         }
     }

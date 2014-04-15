@@ -14,7 +14,7 @@ namespace Codealike.Tests.TestUtils
         public override void Load()
         {
             Bind<ILoginViewModel>().To<LoginViewModel>();
-            Bind<IUserDataViewModel>().To<UserDataViewModel>();
+            Bind<IUserFactsViewModel>().To<UserFactsViewModel>();
 
             Bind<IUserDataService>().ToConstant(new Mock<IUserDataService>().Object);
             Bind<IPageNavigationService>().ToConstant(new Mock<IPageNavigationService>().Object);

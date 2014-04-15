@@ -31,8 +31,10 @@ namespace Codealike.WP8.Tools
 				_container.RegisterPhoneServices(RootFrame);
 
 			_container.PerRequest<LoginViewModel>();
-			_container.PerRequest<UserDataViewModel>();
+			_container.PerRequest<UserFactsViewModel>();
 			_container.PerRequest<ExtendedSplashViewModel>();
+			_container.PerRequest<DashboardViewModel>();
+			_container.PerRequest<DaysOnFireViewModel>();
 
 			_container.RegisterPerRequest(typeof(IWebClient), "WebClient", typeof(WebClient));
 			_container.RegisterPerRequest(typeof(IUserDataService), "UserDataService", typeof(UserDataService));

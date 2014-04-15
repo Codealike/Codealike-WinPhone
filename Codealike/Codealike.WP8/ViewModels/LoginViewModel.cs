@@ -59,7 +59,7 @@
                 {
                     _pageNavigationService.Data["UserData"] = webApiCallReport.Content;
                     _appRepository.SaveCredentials(credentials);
-                    _pageNavigationService.NavigateTo<UserDataViewModel>();
+                    _pageNavigationService.NavigateTo<UserFactsViewModel>();
                 }
             }
             catch (Exception)

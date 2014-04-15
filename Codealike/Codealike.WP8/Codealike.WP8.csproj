@@ -93,17 +93,23 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\SmartPanorama.cs" />
     <Compile Include="Repositories\AppRepository.cs" />
     <Compile Include="Tools\AppBootstrapper.cs" />
     <Compile Include="Models\LocalizedStrings.cs" />
     <Compile Include="Tools\PageNavigationService.cs" />
     <Compile Include="Tools\UserNotificationService.cs" />
+    <Compile Include="ViewModels\DashboardViewModel.cs" />
+    <Compile Include="ViewModels\DaysOnFireViewModel.cs" />
     <Compile Include="ViewModels\ExtendedSplashViewModel.cs" />
-    <Compile Include="ViewModels\IUserDataViewModel.cs" />
+    <Compile Include="ViewModels\IUserFactsViewModel.cs" />
     <Compile Include="ViewModels\IViewModelBase.cs" />
-    <Compile Include="ViewModels\UserDataViewModel.cs" />
+    <Compile Include="ViewModels\UserFactsViewModel.cs" />
     <Compile Include="ViewModels\ILoginViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="Views\DaysOnFireView.xaml.cs">
+      <DependentUpon>DaysOnFireView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ExtendedSplashView.xaml.cs">
       <DependentUpon>ExtendedSplashView.xaml</DependentUpon>
     </Compile>
@@ -117,8 +123,11 @@
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\LoginViewModel.cs" />
-    <Compile Include="Views\UserDataView.xaml.cs">
-      <DependentUpon>UserDataView.xaml</DependentUpon>
+    <Compile Include="Views\DashboardView.xaml.cs">
+      <DependentUpon>DashboardView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserFactsView.xaml.cs">
+      <DependentUpon>UserFactsView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -130,6 +139,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\DaysOnFireView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ExtendedSplashView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -138,7 +151,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\UserDataView.xaml">
+    <Page Include="Views\DashboardView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserFactsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -153,6 +170,7 @@
   <ItemGroup>
     <Content Include="Assets\AlignmentGrid.png" />
     <Content Include="Assets\AppBarIcons\check.png" />
+    <Content Include="Assets\AppBarIcons\refresh.png" />
     <Content Include="Assets\ApplicationIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
