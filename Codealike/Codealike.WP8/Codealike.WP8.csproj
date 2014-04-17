@@ -99,6 +99,7 @@
     <Compile Include="Models\LocalizedStrings.cs" />
     <Compile Include="Tools\PageNavigationService.cs" />
     <Compile Include="Tools\UserNotificationService.cs" />
+    <Compile Include="ViewModels\CodeFactsViewModel.cs" />
     <Compile Include="ViewModels\DashboardViewModel.cs" />
     <Compile Include="ViewModels\DaysOnFireViewModel.cs" />
     <Compile Include="ViewModels\ExtendedSplashViewModel.cs" />
@@ -107,6 +108,9 @@
     <Compile Include="ViewModels\UserFactsViewModel.cs" />
     <Compile Include="ViewModels\ILoginViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="Views\CodeFactsView.xaml.cs">
+      <DependentUpon>CodeFactsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\DaysOnFireView.xaml.cs">
       <DependentUpon>DaysOnFireView.xaml</DependentUpon>
     </Compile>
@@ -136,6 +140,10 @@
       <Generator>MSBuild:Compile</Generator>
     </ApplicationDefinition>
     <Page Include="Resources\AppStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CodeFactsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

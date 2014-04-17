@@ -2,9 +2,11 @@
 {
     using System;
     using System.Threading.Tasks;
-    using PortableLogic.Communication.Services;
-    using PortableLogic.Repositories;
+    using System.Collections.Generic;
+
     using PortableLogic.Tools;
+    using PortableLogic.Repositories;
+    using PortableLogic.Communication.Services;
     using PortableLogic.Communication.ApiModels;
 
     public class UserFactsViewModel : ViewModelBase, IUserFactsViewModel
@@ -16,7 +18,8 @@
         private UserData _userData;
         private bool _isLoaded;
 
-        public UserFactsViewModel(IPageNavigationService pageNavigationService, IUserDataService userDataService, IAppRepository appRepository, IUserNotificationService userNotificationService)
+        public UserFactsViewModel(IPageNavigationService pageNavigationService, IUserDataService userDataService,
+            IAppRepository appRepository, IUserNotificationService userNotificationService)
             : base(pageNavigationService)
         {
             _pageNavigationService = pageNavigationService;
@@ -91,5 +94,12 @@
                 IsBusy = false;
             }
         }
+    }
+
+    public class UserSkill: Technology
+    {
+        public string Color { get; set; }
+
+        public int Width { get; set; }
     }
 }

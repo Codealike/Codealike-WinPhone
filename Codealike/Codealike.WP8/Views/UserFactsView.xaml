@@ -18,18 +18,6 @@
                             shell:SystemTray.BackgroundColor="White"
                             shell:SystemTray.ForegroundColor="Black"
                             mc:Ignorable="d">
-
-    <phone:PhoneApplicationPage.Resources>
-        <SolidColorBrush x:Key="CodingColor" Color="#8CC63F" />
-        <SolidColorBrush x:Key="OutsideIDEColor" Color="#BFFF00" />
-        <SolidColorBrush x:Key="BuildingColor" Color="#E01BAB" />
-        <SolidColorBrush x:Key="DebuggingColor" Color="#F7A200" />
-        <Style x:Key="FactText" TargetType="TextBlock" >
-            <Setter Property="FontSize" Value="30"></Setter>
-            <Setter Property="FontWeight" Value="SemiBold"></Setter>
-            <Setter Property="Foreground" Value="#b2b8bd"></Setter>
-        </Style>
-    </phone:PhoneApplicationPage.Resources>
     <Grid x:Name="LayoutRoot" Background="{StaticResource CodealikePageBackground}">
         <bindableAppBar:BindableAppBar BackgroundColor="#F47723">
             <bindableAppBar:BindableAppBarButton x:Name="Login"
@@ -94,7 +82,7 @@
                         <TextBlock Style="{StaticResource FactText}" Text="Building" />
                         <StackPanel Orientation="Horizontal">
                             <Rectangle x:Name="BuildingBar"
-                                           Fill="{StaticResource OutsideIDEColor}"
+                                           Fill="{StaticResource BuildingColor}"
                                            Style="{StaticResource BarChartRectangle}" />
                             <TextBlock x:Name="BuildingPercentage"
                                            Margin="10 0 0 0"

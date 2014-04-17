@@ -1,11 +1,11 @@
-﻿using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using Codealike.PortableLogic.Annotations;
-
-namespace Codealike.PortableLogic.Communication.ApiModels
+﻿namespace Codealike.PortableLogic.Communication.ApiModels
 {
     using System;
+    using System.ComponentModel;
     using System.Collections.Generic;
+    using System.Runtime.CompilerServices;
+    
+    using Annotations;
 
     public class UserData: INotifyPropertyChanged
     {

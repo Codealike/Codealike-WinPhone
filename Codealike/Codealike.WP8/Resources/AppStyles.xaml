@@ -4,6 +4,15 @@
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                     mc:Ignorable="d">
     <SolidColorBrush x:Key="CodealikeTextForeground" Color="#FF2B383B" />
+    <SolidColorBrush x:Key="CodingColor" Color="#8CC63F" />
+    <SolidColorBrush x:Key="OutsideIDEColor" Color="#BFFF00" />
+    <SolidColorBrush x:Key="BuildingColor" Color="#E01BAB" />
+    <SolidColorBrush x:Key="DebuggingColor" Color="#F7A200" />
+    <Style x:Key="FactText" TargetType="TextBlock" >
+        <Setter Property="FontSize" Value="30"></Setter>
+        <Setter Property="FontWeight" Value="SemiBold"></Setter>
+        <Setter Property="Foreground" Value="#b2b8bd"></Setter>
+    </Style>
     <DataTemplate x:Key="PanoramaTitleStyle">
         <ContentPresenter>
             <StackPanel Margin="20"

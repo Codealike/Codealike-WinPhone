@@ -34,6 +34,7 @@ namespace Codealike.WP8.Tools
 			_container.PerRequest<UserFactsViewModel>();
 			_container.PerRequest<ExtendedSplashViewModel>();
 			_container.PerRequest<DashboardViewModel>();
+			_container.PerRequest<CodeFactsViewModel>();
 			_container.PerRequest<DaysOnFireViewModel>();
 
 			_container.RegisterPerRequest(typeof(IWebClient), "WebClient", typeof(WebClient));
@@ -66,7 +67,7 @@ namespace Codealike.WP8.Tools
 
 		static void AddCustomConventions()
 		{
-			ConventionManager.AddElementConvention<Pivot>(Pivot.ItemsSourceProperty, "SelectedItem", "SelectionChanged").ApplyBinding =
+			ConventionManager.AddElementConvention<Pivot>(ItemsControl.ItemsSourceProperty, "SelectedItem", "SelectionChanged").ApplyBinding =
 				(viewModelType, path, property, element, convention) => {
 					if (ConventionManager
 						.GetElementConvention(typeof(ItemsControl))
@@ -82,7 +83,7 @@ namespace Codealike.WP8.Tools
 					return false;
 				};
 
-			ConventionManager.AddElementConvention<Panorama>(Panorama.ItemsSourceProperty, "SelectedItem", "SelectionChanged").ApplyBinding =
+			ConventionManager.AddElementConvention<Panorama>(ItemsControl.ItemsSourceProperty, "SelectedItem", "SelectionChanged").ApplyBinding =
 				(viewModelType, path, property, element, convention) => {
 					if (ConventionManager
 						.GetElementConvention(typeof(ItemsControl))
