@@ -1,8 +1,8 @@
 ﻿namespace Codealike.WP8.ViewModels
 {
     using System;
+    using System.ComponentModel;
     using System.Threading.Tasks;
-    using System.Collections.Generic;
 
     using PortableLogic.Tools;
     using PortableLogic.Repositories;
@@ -94,12 +94,11 @@
                 IsBusy = false;
             }
         }
-    }
 
-    public class UserSkill: Technology
-    {
-        public string Color { get; set; }
-
-        public int Width { get; set; }
+        public void BackButtonPressed(CancelEventArgs eventArgs)
+        {
+            eventArgs.Cancel = true;
+            _pageNavigationService.CloseApp();
+        }
     }
 }

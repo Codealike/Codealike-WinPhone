@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
-using System.Windows;
-using Caliburn.Micro;
-using Codealike.PortableLogic.Tools;
-
-namespace Codealike.WP8.Tools
+﻿namespace Codealike.WP8.Tools
 {
+    using System.Windows;
+    using System.Collections.Generic;
+    
+    using Caliburn.Micro;
+
+    using PortableLogic.Tools;
+
     public class PageNavigationService : IPageNavigationService
     {
         private readonly INavigationService _navigationService;

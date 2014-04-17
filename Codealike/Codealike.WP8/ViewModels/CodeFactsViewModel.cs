@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Codealike.PortableLogic.Communication.ApiModels;
-
-namespace Codealike.WP8.ViewModels
+﻿namespace Codealike.WP8.ViewModels
 {
+    using System.Linq;
+    using System.Collections.Generic;
+
+    using Models;
     using PortableLogic.Tools;
+    using PortableLogic.Communication.ApiModels;
 
     public class CodeFactsViewModel : ViewModelBase
     {

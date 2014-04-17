@@ -7,7 +7,6 @@
                             xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
                             xmlns:viewModels="clr-namespace:Codealike.WP8.ViewModels"
                             xmlns:bindableAppBar="clr-namespace:Caliburn.Micro.BindableAppBar;assembly=Caliburn.Micro.BindableAppBar"
-                            xmlns:micro="clr-namespace:Caliburn.Micro;assembly=Caliburn.Micro"
                             FontFamily="{StaticResource PhoneFontFamilyNormal}"
                             FontSize="{StaticResource PhoneFontSizeNormal}"
                             Foreground="{StaticResource PhoneForegroundBrush}"
@@ -17,6 +16,7 @@
                             shell:SystemTray.IsVisible="True"
                             shell:SystemTray.BackgroundColor="White"
                             shell:SystemTray.ForegroundColor="Black"
+                            BackKeyPress="BackButtonPressed"
                             mc:Ignorable="d">
     <Grid x:Name="LayoutRoot" Background="{StaticResource CodealikePageBackground}">
         <bindableAppBar:BindableAppBar BackgroundColor="#F47723">

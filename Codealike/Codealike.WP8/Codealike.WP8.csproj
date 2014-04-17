@@ -107,6 +107,7 @@
     <Compile Include="ViewModels\IViewModelBase.cs" />
     <Compile Include="ViewModels\UserFactsViewModel.cs" />
     <Compile Include="ViewModels\ILoginViewModel.cs" />
+    <Compile Include="Models\UserSkill.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\CodeFactsView.xaml.cs">
       <DependentUpon>CodeFactsView.xaml</DependentUpon>

@@ -1,7 +1,8 @@
-﻿using System;
-
-namespace Codealike.WP8.Views
+﻿namespace Codealike.WP8.Views
 {
+    using System;
+    using System.Windows;
+    using System.ComponentModel;
     using System.Threading.Tasks;
     
     using ViewModels;
@@ -15,7 +16,7 @@ namespace Codealike.WP8.Views
             Loaded += UserDataView_Loaded;
         }
 
-        async void UserDataView_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        async void UserDataView_Loaded(object sender, RoutedEventArgs e)
         {
             _viewModel = DataContext as IUserFactsViewModel;
             if (_viewModel != null) await _viewModel.LoadData();
@@ -39,15 +40,17 @@ namespace Codealike.WP8.Views
                 BuildingPercentage.Text = ( ( _viewModel.UserData.ActivityPercentage.Building * i ) / progressCount ).ToString("F");
                 await Task.Delay(1);
             }
-            /*CodingBar.Width = _viewModel.UserData.ActivityPercentage.Coding * 3;
-            DebuggingBar.Width = _viewModel.UserData.ActivityPercentage.Debugging * 3;
-            BuildingBar.Width = _viewModel.UserData.ActivityPercentage.Building * 3;*/
         }
 
         private async void RefreshData(object sender, EventArgs e)
         {
             await _viewModel.LoadData();
             InitializeUI();
+        }
+
+        private void BackButtonPressed(object sender, CancelEventArgs e)
+        {
+            Application.Current.Terminate();
         }
     }
 }

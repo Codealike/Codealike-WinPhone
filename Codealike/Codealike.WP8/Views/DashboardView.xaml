@@ -8,10 +8,12 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="clr-namespace:Codealike.WP8.Controls"
     xmlns:viewModels="clr-namespace:Codealike.WP8.ViewModels"
+    xmlns:micro="clr-namespace:Caliburn.Micro;assembly=Caliburn.Micro"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
+    micro:Message.Attach="[Event BackKeyPress]=[Action BackButtonPressed($eventArgs)]"
     mc:Ignorable="d"
     d:DataContext="{d:DesignInstance viewModels:DashboardViewModel}"
     shell:SystemTray.IsVisible="True">
