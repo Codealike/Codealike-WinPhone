@@ -1,0 +1,37 @@
+﻿<phone:PhoneApplicationPage x:Class="Codealike.WP8.Views.ExtendedSplashView"
+                            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                            xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+                            xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+                            FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                            FontSize="{StaticResource PhoneFontSizeNormal}"
+                            Foreground="{StaticResource PhoneForegroundBrush}"
+                            Orientation="Portrait"
+                            SupportedOrientations="Portrait"
+                            shell:SystemTray.BackgroundColor="White"
+                            shell:SystemTray.ForegroundColor="Black"
+                            shell:SystemTray.IsVisible="True"
+                            mc:Ignorable="d">
+
+    <Grid x:Name="LayoutRoot" Background="{StaticResource CodealikePageBackground}">
+        <StackPanel Margin="20"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal"
+                    Visibility="Visible">
+            <Image Height="50"
+                   Margin="0 10 20 0"
+                   VerticalAlignment="Center"
+                   Source="/Assets/Images/logo.png" />
+            <TextBlock Margin="0,0,0,0"
+                       VerticalAlignment="Center"
+                       FontSize="50"
+                       Foreground="{StaticResource CodealikeTextForeground}"
+                       Text="Codealike" />
+        </StackPanel>
+
+    </Grid>
+
+</phone:PhoneApplicationPage>
