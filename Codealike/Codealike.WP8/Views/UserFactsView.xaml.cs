@@ -1,4 +1,6 @@
-﻿namespace Codealike.WP8.Views
+﻿using System.Windows.Input;
+
+namespace Codealike.WP8.Views
 {
     using System;
     using System.Windows;
@@ -10,6 +12,8 @@
     public partial class UserFactsView
     {
         private IUserFactsViewModel _viewModel;
+        private bool _popupIsOpened;
+
         public UserFactsView()
         {
             InitializeComponent();
@@ -28,7 +32,7 @@
             CodingBar.Width = 0;
             DebuggingBar.Width = 0;
             BuildingBar.Width = 0;
-            var progressCount = 50;
+            const int progressCount = 50;
             for ( int i = 0; i < progressCount; i++ )
             {
                 CodingBar.Width += ( _viewModel.UserData.ActivityPercentage.Coding * 3 ) / progressCount;
@@ -51,6 +55,17 @@
         private void BackButtonPressed(object sender, CancelEventArgs e)
         {
             Application.Current.Terminate();
+        }
+
+        private void OnViewAbout(object sender, EventArgs e)
+        {
+            _popupIsOpened = true;
+            ShowAboutPopup.Begin();
+        }
+
+        private void OnClosePopup(object sender, GestureEventArgs e)
+        {
+            HideAboutPopup.Begin();
         }
     }
 }

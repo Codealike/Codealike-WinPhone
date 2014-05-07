@@ -14,7 +14,21 @@
     shell:SystemTray.IsVisible="True">
 
     <Grid x:Name="LayoutRoot" Background="{StaticResource CodealikePageBackground}">
-        
+        <StackPanel Margin="20" Visibility="Visible"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Orientation="Horizontal">
+            <Image Height="50"
+                       Margin="0 10 20 0"
+                       VerticalAlignment="Center"
+                       Source="/Assets/Images/logo.png" />
+            <TextBlock Margin="0,0,0,0"
+                           VerticalAlignment="Center"
+                           FontSize="50"
+                           Foreground="{StaticResource CodealikeTextForeground}"
+                           Text="Codealike" />
+        </StackPanel>
+
     </Grid>
 
 </phone:PhoneApplicationPage>

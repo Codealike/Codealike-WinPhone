@@ -48,6 +48,12 @@
             }
         }
 
+        public void DeleteCredentials()
+        {
+            IsolatedStorageFile file = IsolatedStorageFile.GetUserStoreForApplication();
+            file.DeleteFile(_fileName);
+        }
+
         public void WriteToFile(byte[] data, string filePath)
         {
             try

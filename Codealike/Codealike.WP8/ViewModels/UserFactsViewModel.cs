@@ -1,4 +1,7 @@
-﻿namespace Codealike.WP8.ViewModels
+﻿using System.Windows;
+using Windows.System;
+
+namespace Codealike.WP8.ViewModels
 {
     using System;
     using System.ComponentModel;
@@ -93,6 +96,29 @@
             {
                 IsBusy = false;
             }
+        }
+
+        public void LogOut()
+        {
+            _pageNavigationService.Data.Clear();
+            _appRepository.DeleteCredentials();
+            _pageNavigationService.NavigateTo<LoginViewModel>();
+        }
+
+        public void ViewPrivacyPolicy()
+        {
+            MessageBox.Show(
+                "This app does not collect, use, store, or disclose to third parties any of your personal information");
+        }
+        
+        public async void GoToWebsite()
+        {
+            await Launcher.LaunchUriAsync(new Uri("https://codealike.com"));
+        }
+
+        public async void GoToTwitter()
+        {
+            await Launcher.LaunchUriAsync(new Uri("https://twitter.com/Codealike"));
         }
 
         public void BackButtonPressed(CancelEventArgs eventArgs)

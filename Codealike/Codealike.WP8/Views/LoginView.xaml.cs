@@ -18,6 +18,10 @@
         private void LoginViewLoaded(object sender, RoutedEventArgs e)
         {
             _helpIsNotOpened = true;
+            while (NavigationService.CanGoBack)
+            {
+                NavigationService.RemoveBackEntry();
+            }
         }
 
 

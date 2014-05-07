@@ -6,5 +6,6 @@ namespace Codealike.PortableLogic.Repositories
     {
         void SaveCredentials(Credentials credentials);
         Credentials LoadCredentials();
+        void DeleteCredentials();
     }
 }

@@ -1,4 +1,5 @@
-﻿using Codealike.PortableLogic.Repositories;
+﻿using System.Threading.Tasks;
+using Codealike.PortableLogic.Repositories;
 
 namespace Codealike.WP8.ViewModels
 {
@@ -15,9 +16,10 @@ namespace Codealike.WP8.ViewModels
             _appRepository = appRepository;
         }
 
-        protected override void OnActivate()
+        protected override async void OnActivate()
         {
             base.OnActivate();
+            await Task.Delay(500);
             var credentials = _appRepository.LoadCredentials();
             if ( credentials != null )
                 _pageNavigationService.NavigateTo<DashboardViewModel>();

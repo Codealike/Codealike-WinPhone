@@ -17,12 +17,12 @@
                             mc:Ignorable="d">
 
     <Grid x:Name="LayoutRoot" Background="{StaticResource CodealikePageBackground}">
-        <bindableAppBar:BindableAppBar BackgroundColor="#F47723">
+       <!-- <bindableAppBar:BindableAppBar BackgroundColor="#F47723">
             <bindableAppBar:BindableAppBarButton x:Name="Login"
                                                  Click="RefreshData"
                                                  IconUri="/Assets/AppBarIcons/refresh.png"
                                                  Text="refresh" />
-        </bindableAppBar:BindableAppBar>
+        </bindableAppBar:BindableAppBar>-->
         <Grid Height="10" VerticalAlignment="Top">
             <ProgressBar Height="10"
                          IsIndeterminate="True"

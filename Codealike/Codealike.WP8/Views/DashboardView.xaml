@@ -19,7 +19,7 @@
     shell:SystemTray.IsVisible="True">
 
     <Grid x:Name="LayoutRoot" Background="{StaticResource CodealikePageBackground}">
-        <controls:SmartPanorama Title="Codealike" x:Name="Items" TitleTemplate="{StaticResource PanoramaTitleStyle}">
+        <controls:SmartPanorama Title="Codealike" SelectedItem="{Binding ActiveItem, Mode=TwoWay}" x:Name="Items" TitleTemplate="{StaticResource PanoramaTitleStyle}">
             <controls:SmartPanorama.HeaderTemplate>
                 <DataTemplate>
                     <TextBlock FontSize="60" Text="{Binding DisplayName, Mode=TwoWay}" Foreground="{StaticResource CodealikeTextForeground}" />
