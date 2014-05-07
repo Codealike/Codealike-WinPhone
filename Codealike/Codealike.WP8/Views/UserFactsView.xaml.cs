@@ -60,11 +60,13 @@ namespace Codealike.WP8.Views
         private void OnViewAbout(object sender, EventArgs e)
         {
             _popupIsOpened = true;
+            (_viewModel as ViewModelBase).DisplayName = "About";
             ShowAboutPopup.Begin();
         }
 
         private void OnClosePopup(object sender, GestureEventArgs e)
         {
+            ( _viewModel as ViewModelBase ).DisplayName = "Behavior facts";
             HideAboutPopup.Begin();
         }
     }
