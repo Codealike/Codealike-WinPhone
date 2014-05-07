@@ -46,7 +46,7 @@
         <Setter Property="Foreground" Value="{StaticResource CodealikeTextForeground}" />
         <Setter Property="Background" Value="White" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="BorderBrush" Value="Black" />
+        <Setter Property="BorderBrush" Value="OrangeRed" />
         <Setter Property="FontFamily" Value="{StaticResource PhoneFontFamilyNormal}" />
         <Setter Property="FontSize" Value="{StaticResource PhoneFontSizeMediumLarge}" />
         <Setter Property="SelectionBackground" Value="{StaticResource PhoneAccentBrush}" />

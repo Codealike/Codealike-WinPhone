@@ -103,7 +103,7 @@
                              Style="{StaticResource CustomTextBoxWithRoundedCorners}" />
                     <TextBlock HorizontalAlignment="Center" Text="codealike token" />
                     <TextBox x:Name="TokenData"
-                             Margin="0 5"
+                             Margin="0 5"                             
                              BorderBrush="Gray"
                              Style="{StaticResource CustomTextBoxWithRoundedCorners}" />
                     <TextBlock x:Name="ErrorMessage"

@@ -100,6 +100,9 @@ namespace Codealike.WP8.ViewModels
 
         public void LogOut()
         {
+            var result = MessageBox.Show("Are you sure you want to log out?", "Log out", MessageBoxButton.OKCancel);
+            if(result == MessageBoxResult.Cancel)
+                return;
             _pageNavigationService.Data.Clear();
             _appRepository.DeleteCredentials();
             _pageNavigationService.NavigateTo<LoginViewModel>();
