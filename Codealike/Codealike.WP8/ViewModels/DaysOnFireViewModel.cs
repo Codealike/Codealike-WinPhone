@@ -14,11 +14,6 @@
             DisplayName = "Days on fire";
         }
 
-        protected override void OnInitialize()
-        {
-            base.OnInitialize();
-        }
-
         protected override void OnActivate()
         {
             base.OnActivate();

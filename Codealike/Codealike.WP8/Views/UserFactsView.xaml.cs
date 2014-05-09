@@ -12,7 +12,6 @@ namespace Codealike.WP8.Views
     public partial class UserFactsView
     {
         private IUserFactsViewModel _viewModel;
-        private bool _popupIsOpened;
 
         public UserFactsView()
         {
@@ -59,7 +58,6 @@ namespace Codealike.WP8.Views
 
         private void OnViewAbout(object sender, EventArgs e)
         {
-            _popupIsOpened = true;
             (_viewModel as ViewModelBase).DisplayName = "About";
             ShowAboutPopup.Begin();
         }
