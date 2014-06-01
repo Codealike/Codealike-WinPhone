@@ -13,6 +13,7 @@
                             FontSize="{StaticResource PhoneFontSizeNormal}"
                             Foreground="{StaticResource PhoneForegroundBrush}"
                             Orientation="Portrait"
+                            VerticalAlignment="Top"
                             SupportedOrientations="Portrait"
                             d:DataContext="{d:DesignInstance viewModels:UserFactsViewModel}"
                             shell:SystemTray.BackgroundColor="White"
@@ -35,7 +36,7 @@
 			</DoubleAnimationUsingKeyFrames>
 		</Storyboard>
 	</phone:PhoneApplicationPage.Resources>
-    <Grid x:Name="LayoutRoot" Background="{StaticResource CodealikePageBackground}">
+    <Grid x:Name="LayoutRoot" VerticalAlignment="Top" Background="{StaticResource CodealikePageBackground}">
         <bindableAppBar:BindableAppBar BackgroundColor="#F47723">
             <bindableAppBar:BindableAppBarButton x:Name="Login"
                                                  Click="RefreshData"
@@ -44,6 +45,7 @@
 
             <bindableAppBar:BindableAppBarMenuItem x:Name="ViewAboutInfo"
                                                    Click="OnViewAbout"
+                                                   Visibility="{Binding IsLoaded, Mode=TwoWay, Converter={StaticResource BooleanToVisibilityConverter}}"
                                                    Text="about" />
             <bindableAppBar:BindableAppBarMenuItem x:Name="ViewPrivacyPolicy"
                                                    Text="privacy policy"

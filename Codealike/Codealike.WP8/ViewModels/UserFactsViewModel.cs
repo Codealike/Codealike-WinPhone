@@ -32,12 +32,14 @@ namespace Codealike.WP8.ViewModels
             DisplayName = "Behavior facts";
         }
 
-        protected override void OnActivate()
+        protected override async void OnActivate()
         {
             base.OnActivate();
             try
             {
                 UserData = _pageNavigationService.Data["UserData"] as UserData;
+                if (UserData == null)
+                    await LoadData();
                 IsLoaded = true;
             }
             catch ( Exception )
@@ -128,6 +130,12 @@ namespace Codealike.WP8.ViewModels
         {
             eventArgs.Cancel = true;
             _pageNavigationService.CloseApp();
+        }
+
+        protected override void OnDeactivate(bool close)
+        {
+            base.OnDeactivate(close);
+            IsLoaded = false;
         }
     }
 }
