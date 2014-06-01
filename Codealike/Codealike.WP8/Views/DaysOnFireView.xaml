@@ -1,23 +1,240 @@
-﻿<phone:PhoneApplicationPage
-    x:Class="Codealike.WP8.Views.DaysOnFireView"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
-    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:viewModels="clr-namespace:Codealike.WP8.ViewModels"
-    FontFamily="{StaticResource PhoneFontFamilyNormal}"
-    FontSize="{StaticResource PhoneFontSizeNormal}"
-    Foreground="{StaticResource PhoneForegroundBrush}"
-    SupportedOrientations="Portrait" Orientation="Portrait"
-    mc:Ignorable="d"
-    d:DataContext="{d:DesignInstance viewModels:DaysOnFireViewModel}"
-    shell:SystemTray.IsVisible="True">
-
+﻿<phone:PhoneApplicationPage x:Class="Codealike.WP8.Views.DaysOnFireView"
+                            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                            xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+                            xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+                            xmlns:viewModels="clr-namespace:Codealike.WP8.ViewModels"
+                            FontFamily="{StaticResource PhoneFontFamilyNormal}"
+                            FontSize="{StaticResource PhoneFontSizeNormal}"
+                            Foreground="{StaticResource PhoneForegroundBrush}"
+                            Orientation="Portrait"
+                            SupportedOrientations="Portrait"
+                            d:DataContext="{d:DesignInstance viewModels:DaysOnFireViewModel}"
+                            shell:SystemTray.IsVisible="True"
+                            mc:Ignorable="d">
+    <phone:PhoneApplicationPage.Resources>
+        <Style x:Key="ScrollViewerStyle" TargetType="ScrollViewer">
+            <Setter Property="VerticalScrollBarVisibility" Value="Auto" />
+            <Setter Property="HorizontalScrollBarVisibility" Value="Disabled" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ScrollViewer">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="ScrollStates">
+                                    <VisualStateGroup.Transitions>
+                                        <VisualTransition GeneratedDuration="00:00:00.5" />
+                                    </VisualStateGroup.Transitions>
+                                    <VisualState x:Name="Scrolling">
+                                        <Storyboard>
+                                            <DoubleAnimation Duration="0"
+                                                             Storyboard.TargetName="VerticalScrollBar"
+                                                             Storyboard.TargetProperty="Opacity"
+                                                             To="1" />
+                                            <DoubleAnimation Duration="0"
+                                                             Storyboard.TargetName="HorizontalScrollBar"
+                                                             Storyboard.TargetProperty="Opacity"
+                                                             To="1" />
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="NotScrolling" />
+                                </VisualStateGroup>
+                                <VisualStateGroup x:Name="VerticalCompression">
+                                    <VisualState x:Name="NoVerticalCompression" />
+                                    <VisualState x:Name="CompressionTop" />
+                                    <VisualState x:Name="CompressionBottom" />
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Grid Margin="{TemplateBinding Padding}">
+                                <ScrollContentPresenter x:Name="ScrollContentPresenter"
+                                                        Content="{TemplateBinding Content}"
+                                                        ContentTemplate="{TemplateBinding ContentTemplate}" />
+                                <ScrollBar x:Name="VerticalScrollBar"
+                                           Width="5"
+                                           Height="Auto"
+                                           HorizontalAlignment="Right"
+                                           VerticalAlignment="Stretch"
+                                           IsHitTestVisible="False"
+                                           IsTabStop="False"
+                                           Maximum="{TemplateBinding ScrollableHeight}"
+                                           Minimum="0"
+                                           Opacity="0"
+                                           Orientation="Vertical"
+                                           ViewportSize="{TemplateBinding ViewportHeight}"
+                                           Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"
+                                           Value="{TemplateBinding VerticalOffset}" />
+                                <ScrollBar x:Name="HorizontalScrollBar"
+                                           Width="Auto"
+                                           Height="5"
+                                           HorizontalAlignment="Stretch"
+                                           VerticalAlignment="Bottom"
+                                           IsHitTestVisible="False"
+                                           IsTabStop="False"
+                                           Maximum="{TemplateBinding ScrollableWidth}"
+                                           Minimum="0"
+                                           Opacity="0"
+                                           Orientation="Horizontal"
+                                           ViewportSize="{TemplateBinding ViewportWidth}"
+                                           Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}"
+                                           Value="{TemplateBinding HorizontalOffset}" />
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="ListBoxStyle" TargetType="ListBox">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="{StaticResource PhoneForegroundBrush}" />
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled" />
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBox">
+                        <ScrollViewer x:Name="ScrollViewer"
+                                      Background="{TemplateBinding Background}"
+                                      BorderBrush="{TemplateBinding BorderBrush}"
+                                      BorderThickness="{TemplateBinding BorderThickness}"
+                                      Foreground="{TemplateBinding Foreground}"
+                                      Padding="{TemplateBinding Padding}"
+                                      Style="{StaticResource ScrollViewerStyle}">
+                            <ItemsPresenter />
+                        </ScrollViewer>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </phone:PhoneApplicationPage.Resources>
     <Grid x:Name="LayoutRoot" Background="{StaticResource CodealikePageBackground}">
-        <TextBlock Foreground="{StaticResource CodealikeTextForeground}"
-                   Text="{Binding UserData.DaysOnFire.Count, Mode=TwoWay}"></TextBlock>
-    </Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackPanel HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Orientation="Horizontal">
+            <Image Height="100" Source="../Assets/Images/on_fire.png" />
+            <TextBlock VerticalAlignment="Center"
+                       FontSize="60"
+                       Foreground="{StaticResource CodealikeTextForeground}"
+                       Text="{Binding UserData.DaysOnFire.Count,
+                                      Mode=TwoWay}" />
+            <TextBlock VerticalAlignment="Center"
+                       FontSize="50"
+                       Foreground="{StaticResource CodealikeTextForeground}"
+                       Text=" days on fire"
+                       Visibility="Collapsed" />
+        </StackPanel>
 
+        <ListBox x:Name="Days"
+                 Grid.Row="1"
+                 ItemsSource="{Binding Days,
+                                       Mode=TwoWay}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel x:Name="stackPanel" RenderTransformOrigin="0.5,0.5">
+                        <StackPanel.Resources>
+                            <Storyboard x:Name="ListBoxClose">
+                                <DoubleAnimation Duration="0:0:0.3"
+                                                 Storyboard.TargetName="listBox"
+                                                 Storyboard.TargetProperty="(UIElement.Opacity)"
+                                                 To="0"
+                                                 d:IsOptimized="True" />
+                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="listBox" Storyboard.TargetProperty="(UIElement.Visibility)">
+                                    <DiscreteObjectKeyFrame KeyTime="0:0:0.3">
+                                        <DiscreteObjectKeyFrame.Value>
+                                            <Visibility>Collapsed</Visibility>
+                                        </DiscreteObjectKeyFrame.Value>
+                                    </DiscreteObjectKeyFrame>
+                                </ObjectAnimationUsingKeyFrames>
+                            </Storyboard>
+                            <Storyboard x:Name="ListBoxOpen">
+                                <ObjectAnimationUsingKeyFrames Storyboard.TargetName="listBox" Storyboard.TargetProperty="(UIElement.Visibility)">
+                                    <DiscreteObjectKeyFrame KeyTime="0">
+                                        <DiscreteObjectKeyFrame.Value>
+                                            <Visibility>Visible</Visibility>
+                                        </DiscreteObjectKeyFrame.Value>
+                                    </DiscreteObjectKeyFrame>
+                                    <DiscreteObjectKeyFrame KeyTime="0:0:0.3">
+                                        <DiscreteObjectKeyFrame.Value>
+                                            <Visibility>Visible</Visibility>
+                                        </DiscreteObjectKeyFrame.Value>
+                                    </DiscreteObjectKeyFrame>
+                                </ObjectAnimationUsingKeyFrames>
+                                <DoubleAnimationUsingKeyFrames Storyboard.TargetName="listBox" Storyboard.TargetProperty="(UIElement.Opacity)">
+                                    <EasingDoubleKeyFrame KeyTime="0" Value="0" />
+                                    <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1" />
+                                </DoubleAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </StackPanel.Resources>
+                        <StackPanel.RenderTransform>
+                            <CompositeTransform />
+                        </StackPanel.RenderTransform>
+                        <Grid Width="480"
+                              Height="60"
+                              Margin="0 1"
+                              Background="#edeeee"
+                              Tap="OnHeaderTapped"                              
+                              Visibility="{Binding IsHeaderVisible,
+                                                   Mode=TwoWay,
+                                                   Converter={StaticResource BooleanToVisibilityConverter}}">
+                            <StackPanel Margin="10 0"
+                                        HorizontalAlignment="Left"
+                                        Visibility="Visible"
+                                        VerticalAlignment="Center"
+                                        Orientation="Horizontal">
+
+                                <Image Height="30" Source="../Assets/Images/on_fire.png" />
+                                <TextBlock VerticalAlignment="Bottom"
+                                           FontSize="25"
+                                           Foreground="{StaticResource CodealikeTextForeground}"
+                                           Text="{Binding Count,
+                                                          Mode=TwoWay}" />
+                                <TextBlock VerticalAlignment="Bottom"
+                                           FontSize="22"
+                                           Foreground="{StaticResource CodealikeTextForeground}"
+                                           Text=" days on fire"
+                                           Visibility="Collapsed" />
+
+                            </StackPanel>
+                            <TextBlock Margin="0 0 0 0"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       FontSize="25"
+                                       FontWeight="Bold"
+                                       Foreground="{StaticResource CodealikeTextForeground}"
+                                       Text="{Binding Header,
+                                                      Mode=TwoWay}" />
+                        </Grid>
+                        <ListBox x:Name="listBox"
+                                 ItemsSource="{Binding Days,
+                                                       Mode=TwoWay}"
+                                 ScrollViewer.VerticalScrollBarVisibility="Disabled">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Margin="0 0 0 10"
+                                               HorizontalAlignment="Center"
+                                               FontSize="25"
+                                               Foreground="Black"
+                                               Text="{Binding}" />
+
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
 </phone:PhoneApplicationPage>

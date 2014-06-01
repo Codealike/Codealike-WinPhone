@@ -6,7 +6,7 @@ namespace Codealike.WP8.Views
     using System.Windows;
     using System.ComponentModel;
     using System.Threading.Tasks;
-    
+
     using ViewModels;
 
     public partial class UserFactsView
@@ -22,7 +22,8 @@ namespace Codealike.WP8.Views
         async void UserDataView_Loaded(object sender, RoutedEventArgs e)
         {
             _viewModel = DataContext as IUserFactsViewModel;
-            if (_viewModel != null) await _viewModel.LoadData();
+            if ( _viewModel != null )
+                await _viewModel.LoadData();
             InitializeUI();
         }
 
@@ -43,6 +44,9 @@ namespace Codealike.WP8.Views
                 BuildingPercentage.Text = ( ( _viewModel.UserData.ActivityPercentage.Building * i ) / progressCount ).ToString("F");
                 await Task.Delay(1);
             }
+            CodingPercentage.Text = ( ( _viewModel.UserData.ActivityPercentage.Coding ) ).ToString("F");
+            DebuggingPercentage.Text = ( ( _viewModel.UserData.ActivityPercentage.Debugging ) ).ToString("F");
+            BuildingPercentage.Text = ( ( _viewModel.UserData.ActivityPercentage.Building ) ).ToString("F");
         }
 
         private async void RefreshData(object sender, EventArgs e)
@@ -58,7 +62,7 @@ namespace Codealike.WP8.Views
 
         private void OnViewAbout(object sender, EventArgs e)
         {
-            (_viewModel as ViewModelBase).DisplayName = "About";
+            ( _viewModel as ViewModelBase ).DisplayName = "About";
             ShowAboutPopup.Begin();
         }
 
