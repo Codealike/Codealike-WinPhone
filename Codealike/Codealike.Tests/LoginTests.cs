@@ -84,7 +84,7 @@ namespace Codealike.Tests
         {
             BindToSuccessfulLogin();
             await _viewModel.Login();
-            TestMocks.PageNavigationMock.Verify(p => p.NavigateTo<HomeViewModel>(), Times.Once);
+            TestMocks.PageNavigationMock.Verify(p => p.NavigateTo<DashboardViewModel>(), Times.Once);
         }
 
         [Test]

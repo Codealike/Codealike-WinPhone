@@ -218,6 +218,7 @@
                                                       Mode=TwoWay}" />
                         </Grid>
                         <ListBox x:Name="listBox"
+                                 Margin="10 0 0 0"
                                  ItemsSource="{Binding Days,
                                                        Mode=TwoWay}"
                                  ScrollViewer.VerticalScrollBarVisibility="Disabled">

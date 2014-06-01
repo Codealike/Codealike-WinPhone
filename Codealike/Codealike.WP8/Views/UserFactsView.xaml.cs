@@ -21,10 +21,20 @@ namespace Codealike.WP8.Views
 
         async void UserDataView_Loaded(object sender, RoutedEventArgs e)
         {
-            _viewModel = DataContext as IUserFactsViewModel;
-            if ( _viewModel != null )
-                await _viewModel.LoadData();
-            InitializeUI();
+            try
+            {
+                _viewModel = DataContext as IUserFactsViewModel;
+                if ( _viewModel != null )
+                {
+                    await _viewModel.LoadData();
+                    if ( _viewModel.IsLoaded )
+                        InitializeUI();
+
+                }
+            }
+            catch (Exception)
+            {
+            }
         }
 
         private async void InitializeUI()

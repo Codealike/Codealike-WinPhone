@@ -6,6 +6,7 @@ namespace Codealike.WP8.ViewModels
     public interface IUserFactsViewModel: IViewModelBase
     {
         UserData UserData { get; set; }
+        bool IsLoaded { get; set; }
         Task LoadData();
     }
 }
