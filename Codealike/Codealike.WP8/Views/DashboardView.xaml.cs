@@ -39,7 +39,7 @@ namespace Codealike.WP8.Views
                 ScheduledActionService.Add(periodicTask);
 
                 // If debugging is enabled, use LaunchForTest to launch the agent in one minute.
-                ScheduledActionService.LaunchForTest(TaskName, TimeSpan.FromSeconds(10));
+                //ScheduledActionService.LaunchForTest(TaskName, TimeSpan.FromSeconds(10));
             }
             catch ( InvalidOperationException ex )
             {
