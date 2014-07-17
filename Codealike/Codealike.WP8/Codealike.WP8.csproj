@@ -240,6 +240,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Codealike.LiveUpdates\Codealike.LiveUpdates.csproj">
+      <Project>{513d1bf3-2edc-4b37-9588-74008433159a}</Project>
+      <Name>Codealike.LiveUpdates</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Codealike.PortableLogic\Codealike.PortableLogic.csproj">
       <Project>{807B8E84-E9FB-468E-821E-F1AF8B568EBE}</Project>
       <Name>Codealike.PortableLogic</Name>

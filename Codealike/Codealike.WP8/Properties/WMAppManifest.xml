@@ -10,6 +10,9 @@
     </Capabilities>
     <Tasks>
       <DefaultTask Name="_default" NavigationPage="/Views/ExtendedSplashView.xaml" />
+      <ExtendedTask Name="SchedulerTask">
+        <BackgroundServiceAgent Specifier="ScheduledTaskAgent" Name="CodealikeScheduler" Source="Codealike.LiveUpdates" Type="Codealike.LiveUpdates.ScheduledAgent"/>
+      </ExtendedTask>
     </Tasks>
     <Tokens>
       <PrimaryToken TokenID="Codealike.WP8Token" TaskName="_default">
