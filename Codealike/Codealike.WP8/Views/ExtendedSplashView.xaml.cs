@@ -1,9 +1,9 @@
-﻿using System.Windows;
-using Codealike.WP8.ViewModels;
-
-namespace Codealike.WP8.Views
+﻿namespace Codealike.WP8.Views
 {
+    using System.Windows;
+
     using AppPromo;
+    using ViewModels;
 
     public partial class ExtendedSplashView
     {

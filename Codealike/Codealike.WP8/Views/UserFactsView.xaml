@@ -143,48 +143,68 @@
             </StackPanel>
         </Grid>
         <Grid x:Name="AboutGrid" Opacity="0">
-            <StackPanel Margin="10 10">
-                <StackPanel Margin="20"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Top"
-                            Orientation="Horizontal"
-                            Visibility="Collapsed">
-                    <Image Height="50"
-                           Margin="0 10 20 0"
-                           VerticalAlignment="Center"
-                           Source="/Assets/Images/logo.png" />
-                    <TextBlock Margin="0,0,0,0"
+            <ScrollViewer Height="500">
+                <StackPanel Height="750" Margin="10 10">
+                    <HyperlinkButton Margin="0 10 0 0"
+                                     VerticalAlignment="Bottom"
+                                     Content="Close"
+                                     FontSize="20"
+                                     Foreground="{StaticResource CodealikeTextForeground}"
+                                     Tap="OnClosePopup" />
+                    <StackPanel Margin="20"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Top"
+                                Orientation="Horizontal"
+                                Visibility="Collapsed">
+                        <Image Height="50"
+                               Margin="0 10 20 0"
                                VerticalAlignment="Center"
-                               FontSize="50"
+                               Source="/Assets/Images/logo.png" />
+                        <TextBlock Margin="0,0,0,0"
+                                   VerticalAlignment="Center"
+                                   FontSize="50"
+                                   Foreground="{StaticResource CodealikeTextForeground}"
+                                   Text="Codealike" />
+                    </StackPanel>
+                    <TextBlock Margin="0 10 0 10"
+                               FontSize="26"
                                Foreground="{StaticResource CodealikeTextForeground}"
-                               Text="Codealike" />
-                </StackPanel>
-                <TextBlock Margin="0 10 0 10"
-                           FontSize="26"
-                           Foreground="{StaticResource CodealikeTextForeground}"
-                           Text="This is not an official app for Codealike. If you would like to know more about them or their product, please visit their website: "
-                           TextAlignment="Center"
-                           TextWrapping="Wrap" />
-                <HyperlinkButton Content="http://www.codealike.com"
-                                 FontSize="26"
-                                 Foreground="DodgerBlue"
-                                 micro:Message.Attach="[Event Tap]=[Action GoToWebsite]" />
-                <TextBlock Margin="0 20"
-                           HorizontalAlignment="Center"
-                           Foreground="{StaticResource CodealikeTextForeground}"
-                           Text="or follow them on twitter" />
-                <HyperlinkButton Content="@codealike"
-                                 FontSize="26"
-                                 Foreground="DodgerBlue"
-                                 micro:Message.Attach="[Event Tap]=[Action GoToTwitter]" />
-                <HyperlinkButton Margin="0 10 0 0"
-                                 VerticalAlignment="Bottom"
-                                 Content="Close"
-                                 FontSize="20"
-                                 Foreground="{StaticResource CodealikeTextForeground}"
-                                 Tap="OnClosePopup" />
+                               Text="This is not an official app for Codealike. If you would like to know more about them or their product, please visit their website: "
+                               TextAlignment="Center"
+                               TextWrapping="Wrap" />
+                    <HyperlinkButton Content="http://www.codealike.com"
+                                     FontSize="26"
+                                     Foreground="DodgerBlue"
+                                     micro:Message.Attach="[Event Tap]=[Action GoToWebsite]" />
+                    <TextBlock Margin="0 20"
+                               HorizontalAlignment="Center"
+                               Foreground="{StaticResource CodealikeTextForeground}"
+                               Text="or follow them on twitter" />
+                    <HyperlinkButton Content="@codealike"
+                                     FontSize="26"
+                                     Foreground="DodgerBlue"
+                                     micro:Message.Attach="[Event Tap]=[Action GoToTwitter]" />
 
-            </StackPanel>
+                    <TextBlock Margin="0 10 0 10"
+                               FontSize="26"
+                               Foreground="{StaticResource CodealikeTextForeground}"
+                               Text="About this app"
+                               TextAlignment="Center"
+                               TextWrapping="Wrap" />
+                    <TextBlock Margin="0 10 0 10"
+                               FontSize="26"
+                               Foreground="{StaticResource CodealikeTextForeground}"
+                               Text="If you want to see all the data about your work, please use the website. With this app you can see your facts, days on fire and the technologies you use. Tap refresh to update your stats and you can also pin the app to your start screen."
+                               TextAlignment="Center"
+                               TextWrapping="Wrap" />
+                    <HyperlinkButton Margin="0 10 0 0"
+                                     VerticalAlignment="Bottom"
+                                     Content="Close"
+                                     FontSize="20"
+                                     Foreground="{StaticResource CodealikeTextForeground}"
+                                     Tap="OnClosePopup" />
+                </StackPanel>
+            </ScrollViewer>
         </Grid>
     </Grid>
 </phone:PhoneApplicationPage>
