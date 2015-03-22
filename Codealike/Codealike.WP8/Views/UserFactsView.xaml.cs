@@ -1,9 +1,8 @@
-﻿using System.Windows.Input;
-
-namespace Codealike.WP8.Views
+﻿namespace Codealike.WP8.Views
 {
     using System;
     using System.Windows;
+    using System.Windows.Input;
     using System.ComponentModel;
     using System.Threading.Tasks;
 

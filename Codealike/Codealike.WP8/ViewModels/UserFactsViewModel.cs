@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using Windows.System;
+using Microsoft.Phone.Tasks;
 
 namespace Codealike.WP8.ViewModels
 {
@@ -114,6 +115,13 @@ namespace Codealike.WP8.ViewModels
         {
             MessageBox.Show(
                 "This app does not collect, use, store, or disclose to third parties any of your personal information");
+        }
+        public void SendFeedback()
+        {
+            EmailComposeTask task = new EmailComposeTask();
+            task.To = "bujdeabogdan@gmail.com";
+            task.Subject = "Codealike Feedback";
+            task.Show();
         }
         
         public async void GoToWebsite()

@@ -1,6 +1,3 @@
-using Codealike.PortableLogic.Repositories;
-using Codealike.WP8.Repositories;
-
 namespace Codealike.WP8.Tools
 {
 	using System;
@@ -10,8 +7,10 @@ namespace Codealike.WP8.Tools
 
 	using Caliburn.Micro;
 
-	using ViewModels;
-	using PortableLogic.Tools;
+    using ViewModels;
+    using Repositories;
+    using PortableLogic.Tools;
+    using PortableLogic.Repositories;
 	using PortableLogic.Communication.Services;
 	using PortableLogic.Communication.Infrastructure;
 
