@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
-
-namespace Codealike.Tests
+﻿namespace Codealike.Tests
 {
+    using System.Collections.Generic;
+
     using Moq;
     using NUnit.Framework;
     using FluentAssertions;
