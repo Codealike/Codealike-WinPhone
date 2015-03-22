@@ -18,7 +18,7 @@
 
     <Grid x:Name="LayoutRoot" Background="{StaticResource CodealikePageBackground}">
         <appPromo:RateReminder x:Name="RateReminder"
-                               CustomReminderText="Would you like to give us a rating? It really helps us improve the game! Thank you!"
+                               CustomReminderText="Would you like to give us a rating? It really helps us improve the app! Thank you!"
                                RunsBeforeReminder="5"
                                TryReminderCompleted="OnTryReminderCompleted" />
         <StackPanel Margin="20"

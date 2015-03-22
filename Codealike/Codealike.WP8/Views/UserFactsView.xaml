@@ -62,6 +62,9 @@
             <bindableAppBar:BindableAppBarMenuItem x:Name="ViewPrivacyPolicy"
                                                    Text="privacy policy"
                                                    micro:Message.Attach="[Event Click]=[Action ViewPrivacyPolicy]" />
+            <bindableAppBar:BindableAppBarMenuItem x:Name="SendFeedback"
+                                                   Text="send feedback"
+                                                   micro:Message.Attach="[Event Click]=[Action SendFeedback]" />
             <bindableAppBar:BindableAppBarMenuItem x:Name="LogOut"
                                                    Text="log out"
                                                    micro:Message.Attach="[Event Click]=[Action LogOut]" />
@@ -144,7 +147,7 @@
         </Grid>
         <Grid x:Name="AboutGrid" Opacity="0">
             <ScrollViewer Height="500">
-                <StackPanel Height="750" Margin="10 10">
+                <StackPanel Height="800" Margin="10 10">
                     <HyperlinkButton Margin="0 10 0 0"
                                      VerticalAlignment="Bottom"
                                      Content="Close"
@@ -184,7 +187,6 @@
                                      FontSize="26"
                                      Foreground="DodgerBlue"
                                      micro:Message.Attach="[Event Tap]=[Action GoToTwitter]" />
-
                     <TextBlock Margin="0 10 0 10"
                                FontSize="26"
                                Foreground="{StaticResource CodealikeTextForeground}"
